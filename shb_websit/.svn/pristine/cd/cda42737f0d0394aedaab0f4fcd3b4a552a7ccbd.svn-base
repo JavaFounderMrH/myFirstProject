@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myview">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sun Holiday</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/twolevel.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/jquery.pagination.css">
+
+</head>
+<body data-ui-view>
+    <script type="text/javascript">
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            window.location.href = "http://localhost:8080/shb_website_web/homeApp.html";
+            console.log("h5")
+        } else {
+            //window.location.href = "pc";
+            console.log("pc")
+        }
+    </script>
+</body>
+    <script type="text/javascript" src="lib/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="lib/js/swiper-3.4.2.jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.pagination.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="js/myview.js"></script>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/layerLevel.css">
+    <style type="text/css">
+	    .quitWrap{top: 25px;z-index: 999;}
+	    .mod18{width:98%;position:relative;margin:0 auto;padding: 10px;}
+		.mod18 .btn{position:absolute;cursor:pointer;z-index:99;font-size:50px;font-weight:bold;}
+		.mod18 #prevTop,.mod18 #nextTop{top: 40%;width: 30px;height: 56px;}
+		.mod18 #prev,.mod18 #next{bottom: 10px;width: 40px;height: 110px;}
+		.mod18 #prevTop{left: 20px;background:url(../../image/houseList/prevBtnTop.png) 0 0 no-repeat;}
+		.mod18 #nextTop{right: 20px;background:url(../../image/houseList/nextBtnTop.png) 0 0 no-repeat;}
+		.mod18 #prevTop:hover{left: 20px;background:url(../../image/houseList/prevBtnTop_on.png) 0 0 no-repeat;}
+		.mod18 #nextTop:hover{right: 20px;background:url(../../image/houseList/nextBtnTop_on.png) 0 0 no-repeat;}
+		.mod18 .prev{left:13px; background: rgba(0,0,0,0.5) url(../../image/houseList/prevBtn.png) no-repeat;background-position: center;}
+		.mod18 .next{right:13px; background:rgba(0,0,0,0.5) url(../../image/houseList/nextBtn.png) no-repeat;background-position: center;}
+		.mod18 li{float:left;}
+		.mod18 .cf li{position:relative;color:#fff;}
+		.mod18 .cf a{display:block;width:980px;height:589px;position:absolute;color:#fff;}
+		.mod18 .cf li span{display:block;width:486px;position:absolute;left:75px;bottom:0;padding:10px 20px;line-height:22px;text-align:left;background:rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = "#60000000",endColorstr = "#60000000");}
+		.mod18 .picBox{width: 100%;height: 589px;position: relative;overflow: hidden;margin-bottom: 10px;}
+		.mod18 .picBox ul{height:589px;position:absolute; left:0;}
+		.mod18 .picBox li{width:980px;height:589px;}
+		.mod18 .picBox li a img{width:980px;height:589px;}
+		.mod18 .listBox{width: 100%;height: 113px;margin: 0 auto;position: relative;overflow: hidden;}
+		.mod18 .listBox ul{width:980px!important;height:113px;position:absolute;}
+		.mod18 .listBox li{width:188px;height:113px;cursor:pointer;position:relative;margin-right: 20px;}
+		.mod18 .listBox li i{display:none;}
+		.mod18 .listBox li a{display:block;width:188px;height:113px;}
+		.mod18 .listBox li a img{border:3px solid transparent;}
+		.mod18 .listBox .on img{border:3px solid #40d8d7;}
+		.mod18 .listBox .on i{display:block;}
+    </style>
+</head>
+<body>
+	<a class="quitWrap">
+		<img src="../../image/quit.png" class="quit" id="lofinQuit">
+	</a>
+	<div class="htmleaf-container">
+		<div class="mod18">
+			<span id="prev" class="btn prev"></span>
+			<span id="next" class="btn next"></span>
+			<span id="prevTop" class="btn prev"></span>
+			<span id="nextTop" class="btn next"></span>
+			<div id="picBox" class="picBox">
+				<ul class="cf">
+					<!-- <li> <a><img src="../../image/home/banner1.png"></a> </li>
+					<li> <a><img src="../../image/home/banner2.png"></a> </li>
+					<li> <a><img src="../../image/home/banner3.png"></a> </li>
+					<li> <a><img src="../../image/home/banner4.png"></a> </li> -->
+				</ul>
+			</div>
+			<div id="listBox" class="listBox">
+				<ul class="cf">
+					<!-- <li> <a><img src="../../image/home/banner1.png"></a> </li>
+					<li> <a><img src="../../image/home/banner2.png"></a> </li>
+					<li> <a><img src="../../image/home/banner3.png"></a> </li>
+					<li> <a><img src="../../image/home/banner4.png"></a> </li> -->
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../../lib/layui/layui.all.js"></script>
+	<script type="text/javascript" src="../../lib/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/swiper-3.4.2.jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/main.js"></script>
+	<script type="text/javascript" src="../../js/layerLevel/houseListMoreImg.js"></script>
+</body>
+</html>

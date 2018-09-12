@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.order.OrderStateDao" >
+  <resultMap id="BaseResultMap" type="com.shb.web.mobile.order.OrderState" >
+    <id column="sos_id" property="sosId" jdbcType="BIGINT" />
+    <result column="soi_id" property="soiId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insertSelective" parameterType="OrderState" >
+    insert into shb_order_state
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sosId != null" >
+        sos_id,
+      </if>
+      <if test="soiId != null" >
+        soi_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+        <if test="operator != null" >
+        operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sosId != null" >
+        #{sosId,jdbcType=BIGINT},
+      </if>
+      <if test="soiId != null" >
+        #{soiId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+       <if test="operator != null" >
+        #{operator},
+      </if>
+    </trim>
+  </insert>
+</mapper>

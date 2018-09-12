@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.room.TradeareaOneDao">
+	<resultMap id="BaseResultMap"
+		type="com.shb.web.mobile.room.TradeareaOne">
+		<id column="sto_id" property="stoId" jdbcType="BIGINT" />
+		<result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="tradearea_one" property="tradeareaOne"
+			jdbcType="VARCHAR" />
+		<result column="tradearea_syn" property="tradeareaSyn"
+			jdbcType="VARCHAR" />
+		<result column="add_un" property="addUn" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="operator" property="operator" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+	   <result column="type" property="type" jdbcType="TINYINT" />
+		
+	</resultMap>
+	<sql id="Base_Column_List">
+		sto_id, area_code, code, tradearea_one, tradearea_syn,
+		add_un, create_time,
+		operator,
+		modify_time, is_delete,type
+	</sql>
+	<select id="selectByPrimaryKey" resultType="TradeareaOne"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from shb_tradearea_one
+		where sto_id = #{stoId,jdbcType=BIGINT} and
+		is_delete = 1
+	</select>
+	
+	<select id="queryTradeareaOne" parameterType="TradeareaOne"
+		resultType="TradeareaOne">
+
+		SELECT
+		a.sto_id AS stoId,
+		b.city_name AS cityName,
+		a.tradearea_one AS
+		tradeareaOne,
+		DATE_FORMAT(
+		a.create_time,
+		'%Y-%m-%d %H:%i:%s'
+		)AS
+		createTime, a.type AS type
+
+		FROM
+		`shb_tradearea_one` a
+		LEFT JOIN shb_city
+		b ON a.area_code = b.area_code
+		where a.is_delete=1
+		AND a.area_code NOT IN (0101)
+	    AND a.type=1
+		<if test="tradeareaOne!=null and  tradeareaOne!=''">
+
+			AND a.tradearea_one LIKE CONCAT(CONCAT('%',
+			#{tradeareaOne}),'%')
+		</if>
+		<if test="stoId!=null">
+			AND a.sto_id=#{stoId}
+		</if>
+		<if test="cityName!=null">
+			AND b.city_name=#{cityName}
+		</if>
+		<if test="areaCode!=null">
+			AND b.area_code=#{areaCode}
+		</if>
+		GROUP BY
+		a.sto_id
+		ORDER BY
+		a.area_code
+	</select>
+</mapper>

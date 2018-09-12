@@ -1,0 +1,142 @@
+<script type="text/javascript" src="sunholiday/js/main.js"></script>
+<script type="text/javascript" src="sunholiday/js/productList.js"></script>
+<!--==========    luxian 旅游路线  ==========-->
+<!-- 旅游路线 - banner -->
+<div class="luxianBanner">
+    <img src="sunholiday/image/luxian/luxianBanner.png">
+</div>
+<!-- 路线 - luxian -->
+<div class="luxianWrap">
+    <div class="luxian_l"></div>
+    <div class="luxian_r">
+        <h3>联系方式</h3>
+        <p class="lianxiTel"><span>联系电话</span>010-56138614/13020033979</p>
+        <p class="lianxiWeixin"><span>联系微信</span>shanhaibian2017/13020033979</p>
+        <h3>更多推荐产品</h3>
+        <ul class="tuijian">
+            <!-- <li class="tuijian1"><a><img src="sunholiday/image/luxian/tuijian1.png"><span>轻奢云水谣</span></a></li>
+            <li class="tuijian2"><a><img src="sunholiday/image/luxian/tuijian2.png"><span>西域盛宴</span></a></li>
+            <li class="tuijian3"><a><img src="sunholiday/image/luxian/tuijian3.png"><span>东北漠河</span></a></li>
+            <li class="tuijian4"><a><img src="sunholiday/image/luxian/tuijian4.png"><span>西域大玩家</span></a></li>
+            <li class="tuijian5"><a><img src="sunholiday/image/luxian/tuijian5.png"><span>春江悦夜</span></a></li>
+            <li class="tuijian6"><a><img src="sunholiday/image/luxian/tuijian6.png"><span>恩施印象</span></a></li>
+            <li class="tuijian7"><a><img src="sunholiday/image/luxian/tuijian7.png"><span>穿越南北东疆</span></a></li>
+            <li class="tuijian8"><a><img src="sunholiday/image/luxian/tuijian8.png"><span>神农架遇上恩施</span></a></li>
+            <li class="tuijian9"><a><img src="sunholiday/image/luxian/tuijian9.png"><span>伊犁盛宴</span></a></li> -->
+        </ul>
+    </div>
+</div>
+<!-- 悬浮框 - 共同部分 -->
+<div class="subNav">
+    <div class="sub_l">
+    	<div class="sub_l_img sub_l_com">
+	    	<a class="quitWrap">
+				<img src="sunholiday/image/quit.png" class="quit subQuit" data-num="0">
+			</a>
+    		<div>
+    			<img src="sunholiday/image/home/foot_1_1.png">
+                <p>扫码下载山海边APP</p>
+    		</div>
+    		<div>
+    			<img src="sunholiday/image/home/foot_1_2.png">
+                <p>扫码关注山海边订阅号</p>
+    		</div>
+    	</div>
+    	<div class="sub_l_tel sub_l_com">
+	    	<a class="quitWrap">
+				<img src="sunholiday/image/quit.png" class="quit subQuit" data-num="1">
+			</a>
+    		<div>
+    			<p>房客服务热线</p>
+    			<span>400-150-0599</span>
+    		</div>
+    		<i></i>
+    		<div>
+    			<p>业务服务热线</p>
+    			<span>010-56138614 刘先生</span>
+    		</div>
+    		<i></i>
+    		<div>
+    			<p>业务合作微信</p>
+    			<span>shanhaibian2017</span>
+    		</div>
+    		<i></i>
+    		<div>
+    			<p>简历投递邮箱</p>
+    			<span>hr@shanhaibian.com</span>
+    		</div>
+    	</div>
+    	<div class="sub_l_yijian sub_l_com">
+    		<a class="quitWrap">
+				<img src="sunholiday/image/quit.png" class="quit subQuit" data-num="3">
+			</a>
+    		<h3>意见反馈</h3>
+    		<textarea placeholder="您对山海边有任何意见，或者在山海边的APP、官网、订阅号等平台使用过程中遇到问题，请在本页反馈。" id="yijianTxt" maxlength="300"></textarea>
+    		<textarea placeholder="留下您的手机号/固定电话/QQ/微信/邮箱等任意一种联系方式，方便我们及时给您回复。" id="yijianTel"></textarea>
+    		<p id="yijianTip">联系方式不能为空</p>
+    		<button id="yijianSubmit">提交反馈</button>
+    	</div>
+    	<div class="sub_l_fankui sub_l_com">
+    		<a class="quitWrap">
+				<img src="sunholiday/image/quit.png" class="quit subQuit">
+			</a>
+    		<img src="sunholiday/image/home/sub_l_fankui.png" class="sub_l_fankui_img">
+    		<h3>反馈已提交</h3>
+    		<p>山海边重视您的每一个问题，您的反馈就是我们进步的动力</p>
+			<p>请耐心等待，工作人员将尽快与您联系。</p>
+			<button id="fankuiBtn">我知道了</button>
+    	</div>
+    </div>
+    <ul class="sub_r">
+        <li><img src="sunholiday/image/home/com_erweima.png"></li>
+        <li><img src="sunholiday/image/home/com_tel.png"></li>
+        <li><a href="https://weibo.com/lvshb?refer_flag=1001030101_&is_all=1" target="_blank"><img src="sunholiday/image/home/com_weibo.png"></a></li>
+        <li><img src="sunholiday/image/home/com_yijian.png"></li>
+    </ul>
+</div>
+<!-- 网站脚部 - 共同部分 -->
+<footer class="footer">
+    <div class="rowBetween">
+        <div class="rowStart">
+            <div class="foot_1 rowCenter">
+                <dl>
+                    <dt>
+                        <img src="sunholiday/image/home/foot_1_1.png">
+                    </dt>
+                    <dd>扫码下载APP</dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <img src="sunholiday/image/home/foot_1_2.png">
+                    </dt>
+                    <dd>扫码关注订阅号</dd>
+                </dl>
+            </div>
+            <ul class="foot_2">
+                <li>电话：<a>400-1500-599</a></li>
+                <li>邮箱：<a>severs@shanhaibian.com</a></li>
+                <li>地址：<a>北京市丰台区南三环万兴大厦B座5层</a></li>
+            </ul>
+        </div>
+        <div class="rowStart">
+            <ul class="foot_3">
+                <li><a href="https://weibo.com/lvshb?refer_flag=1001030101_&is_all=1" target="_blank">关注新浪微博</a></li>
+                <li><a href="https://itunes.apple.com/cn/app/ji-xun-xin-wen/id1268508944?mt=8" target="_blank">下载苹果版APP</a></li>
+                <li><a href="http://shanhaibian.com/shb_mobile_backend_web/shb_v1.apk">下载安卓版APP</a></li>
+            </ul>
+            <ul class="foot_4">
+                <li><a data-ui-sref="home">首页</a></li>
+                <li><a data-ui-sref="gongsi">公司简介</a></li>
+                <li><a data-ui-sref="product">产品介绍</a></li>
+                <li><a data-ui-sref="news">新闻中心</a></li>
+                <li><a data-ui-sref="ziying">自营品牌</a></li>
+                <li><a href="http://company.zhaopin.com/CC295267788.htm" target="_blank">加入我们</a></li>
+                <li><a class="fangyuan">发布房源</a></li>
+                <li><a data-ui-sref="lianxiWomen">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyRight">
+        <p>山海边(北京)电子商务股份有限公司 京ICP备15045556号-1</p>
+    </div>
+</footer>

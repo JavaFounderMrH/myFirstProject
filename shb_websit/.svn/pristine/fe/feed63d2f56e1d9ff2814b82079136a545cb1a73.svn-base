@@ -1,0 +1,211 @@
+/*Reset CSS*/
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, input, legend, img ,th, td { margin:0; padding:0; }
+fieldset, img { border:none; }
+img { display: block; }
+address, caption, cite, code, dfn, th, var, h1, h2, h3, h4, h5, h6, i, b { font-style:normal; font-weight:normal; }
+ul, ol,li { list-style:none; }
+body{ color: #333; font-size: 0.13rem; font-family: "PingFang SC Regular"}
+/*body { color:#333; font:18px/24px "微软雅黑","SimSun","宋体","Arial Narrow",HELVETICA; background-color:#fff;!* overflow-y:scroll;*! overflow-x:hidden; }*/
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+input, button, select, textarea { outline:none; }
+a { color:#333; text-decoration:none; }
+/*a:visited { color:#fff; }*/
+/*a:hover, a:active, a:focus { color:#2df2f7; }*/
+.left { float:left; }
+.right { float:right; }
+.clearboth { clear:both;height:0;overflow:hidden; }
+.none{display: none!important;}
+.flex{display: flex}
+/*flex*/
+.rowStart{
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.rowCenter{
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.rowBetween{
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.rowAround{
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.columnStart{
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.columnCenter{
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.columnBetween{
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.columnAround{
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #ccc;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+    opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #ccc;
+    opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #ccc;
+}
+/* common */
+.header{
+    width: 100%;
+    height: 0.425rem;
+    border-bottom: 0.01rem solid #29d7dc;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999999;
+    background: #fff;
+}
+.logo{
+    display: block;
+    width: 7%;
+    height: 0.285rem;
+    margin-left: 0.11rem;
+    background: url("../img/home/logo.png");
+    background-size: cover;
+    margin-right: 0.11rem;
+}
+#nav{
+    /* padding-right: 0.225rem; */
+    width: 93%;
+}
+#nav .swiper-slide{
+    width: auto;
+    height: 0.425rem;
+    line-height: 0.45rem;
+    margin-left: 0.225rem;
+}
+#nav .swiper-wrapper div:nth-child(1){
+	margin-left: 0.1rem;
+}
+#nav .swiper-wrapper div:nth-last-child(1){
+	margin-right: 0.225rem;
+}
+#hover{
+    color: #29d7dc;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+.footer{
+    height: 1.955rem;
+    background: url("../img/home/footBg.png") no-repeat;
+    background-size: cover;
+}
+.footNav{
+    height: 0.415rem;
+}
+.footNav li a{
+    display: block;
+    font-size: 0.11rem;
+    color: #fff;
+    height: 0.12rem;
+    line-height: 0.12rem;
+    padding: 0 0.08rem;
+    border-left: 0.005rem solid #fff;
+}
+.footNav li:nth-child(1) a{
+    border-left: none;
+}
+.footImg{
+    margin-top: 0.015rem;
+    height: 1.2rem;
+}
+.footImg li img{
+	width: 0.985rem;
+	height: 0.985rem;
+}
+/* .footImg li a{
+    display: block;
+    width: 0.985rem;
+    height: 0.985rem;
+} */
+.footImg li span{
+    display: block;
+    color: #fff;
+    margin-top: 0.1rem;
+    text-align: center;
+}
+.footImg li:nth-child(1){
+    margin-right: 0.47rem;
+}
+/* .footImg li:nth-child(1) a{
+    background: url("../img/home/footImg1.png") no-repeat;
+    background-size: cover;
+}
+.footImg li:nth-child(2) a{
+    background: url("../img/home/footImg2.png") no-repeat;
+    background-size: cover;
+} */
+.copy{
+    font-size: 0.09rem;
+    color: #969696;
+    text-align: center;
+    margin-top: 0.12rem;
+}

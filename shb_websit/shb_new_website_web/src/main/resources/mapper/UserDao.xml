@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.user.UserDao">
+	<resultMap id="BaseResultMap" type="com.shb.web.mobile.user.User">
+		<id column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="nickname" property="nickname" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="TINYINT" />
+		<result column="date_birth" property="dateBirth" jdbcType="TIMESTAMP" />
+		<result column="educational_background" property="educationalBackground"
+			jdbcType="VARCHAR" />
+		<result column="head_portrait" property="headPortrait"
+			jdbcType="VARCHAR" />
+		<result column="res_time" property="resTime" jdbcType="TIMESTAMP" />
+		<result column="res_ip" property="resIp" jdbcType="VARCHAR" />
+		<result column="res_type" property="resType" jdbcType="TINYINT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="user_status" property="userStatus" jdbcType="TINYINT" />
+		<result column="operator" property="operator" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_id, username, password, nickname, name, sex,user_city,mailbox,
+
+		DATE_FORMAT(date_birth,'%Y-%m-%d') as dateBirth,
+
+		educational_background,
+		head_portrait, res_time, res_ip,
+		res_type,
+		create_time, user_status, operator,
+		modify_time,
+		is_delete
+	</sql>
+	<insert id="insertSelective" parameterType="User"
+		keyProperty="userId">
+		insert into shb_user_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="username != null">
+				username,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="nickname != null">
+				nickname,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="dateBirth != null">
+				date_birth,
+			</if>
+			<if test="educationalBackground != null">
+				educational_background,
+			</if>
+			<if test="headPortrait != null">
+				head_portrait,
+			</if>
+			<if test="resTime != null">
+				res_time,
+			</if>
+			<if test="resIp != null">
+				res_ip,
+			</if>
+			<if test="resType != null">
+				res_type,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="userStatus != null">
+				user_status,
+			</if>
+			<if test="operator != null">
+				operator,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="registerType != null">
+				register_type,
+			</if>
+			<if test="userCity != null">
+				user_city,
+			</if>
+			<if test="mailbox != null">
+				mailbox,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=BIGINT},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="nickname != null and nickname!=''">
+				#{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null and name!=''">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null and sex!=''">
+				#{sex,jdbcType=TINYINT},
+			</if>
+			<if test="dateBirth != null">
+				#{dateBirth},
+			</if>
+			<if test="educationalBackground != null">
+				#{educationalBackground,jdbcType=VARCHAR},
+			</if>
+			<if test="headPortrait != null and headPortrait !=''">
+				#{headPortrait,jdbcType=VARCHAR},
+			</if>
+			<if test="resTime != null">
+				#{resTime},
+			</if>
+			<if test="resIp != null">
+				#{resIp,jdbcType=VARCHAR},
+			</if>
+			<if test="resType != null">
+				#{resType,jdbcType=TINYINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="userStatus != null">
+				#{userStatus,jdbcType=TINYINT},
+			</if>
+			<if test="operator != null">
+				#{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="registerType != null">
+				#{registerType},
+			</if>
+			<if test="userCity != null">
+				#{userCity,jdbcType=VARCHAR},
+			</if>
+			<if test="mailbox != null">
+				#{mailbox,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		<selectKey resultType="java.lang.Long" order="AFTER"
+			keyProperty="userId">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<select id="queryUser" resultType="User" parameterType="java.lang.String">
+		SELECT
+		a.user_id AS userId,
+		a.username AS username,
+		a.password AS
+		password,
+		a.nickname AS
+		nickname,
+		DATE_FORMAT(a.date_birth, '%Y-%m-%d')
+		AS dateBirth,
+		a.educational_background AS educationalBackground,
+		a.head_portrait AS
+		headPortrait,
+		a.user_city AS userCity,
+		a.sex AS sex ,a.name AS name
+		FROM
+		`shb_user_info` a
+		WHERE
+		a.is_delete = 1
+
+		<if test="_parameter != null">
+			AND a.username = #{username}
+		</if>
+		GROUP BY a.username
+	</select>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="User">
+		update shb_user_info
+		<set>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="nickname != null">
+				nickname = #{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null and name!=''">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null and sex != ''">
+				sex = #{sex,jdbcType=TINYINT},
+			</if>
+			<if test="dateBirth != null and dateBirth!=''">
+				date_birth = #{dateBirth},
+			</if>
+			<if test="educationalBackground != null">
+				educational_background =
+				#{educationalBackground,jdbcType=VARCHAR},
+			</if>
+			<if test="headPortrait != null and headPortrait!=''">
+				head_portrait = #{headPortrait,jdbcType=VARCHAR},
+			</if>
+			<if test="resTime != null">
+				res_time = #{resTime},
+			</if>
+			<if test="resIp != null">
+				res_ip = #{resIp,jdbcType=VARCHAR},
+			</if>
+			<if test="resType != null">
+				res_type = #{resType,jdbcType=TINYINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime},
+			</if>
+			<if test="userStatus != null">
+				user_status = #{userStatus,jdbcType=TINYINT},
+			</if>
+			<if test="operator != null">
+				operator = #{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="mailbox != null">
+				mailbox = #{mailbox},
+			</if>
+			<if test="userCity != null">
+				user_city = #{userCity},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=BIGINT}
+	</update>
+	
+	<!--修改密码 -->
+	<update id="updateUserPassword" parameterType="User">
+		update
+		shb_user_info set password = #{password} where username = #{username}
+	</update>
+	
+	<!-- 个人中心 我的信息 -->
+
+	<select id="queryUserInfoByName" parameterType="String"
+		resultType="com.shb.web.dto.user.UserInfoDto">
+		SELECT
+		a.user_id as userId,
+		a.username as username,
+		a.nickname as nickName,
+		a.user_city as userCity,
+		a.head_portrait as headPortrait,
+		(
+		SELECT
+		sum(b.price)
+		FROM
+		shb_coupon b
+		WHERE
+		a.user_id = b.sui_rid AND b.state = 1
+		) couponToalPrice,
+		(
+		SELECT
+		COUNT(*)
+		FROM
+		shb_room_collection c LEFT JOIN shb_room_info b on c.sri_rid =
+		b.sri_id
+		WHERE
+		c.username = a.username and b.is_delete = 1 and b.room_status = 1 and
+		b.room_type = 1
+		) roomCount
+		FROM
+		shb_user_info a
+		where a.username =
+		#{username}
+	</select>
+	
+	<!-- ID 查询用户信息  -->
+	<select id="selectByPrimaryKey" resultType="User"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from shb_user_info
+		where user_id = #{userId,jdbcType=BIGINT}
+	</select>
+	
+	 <insert id="insertUserFeedback" parameterType="Recruit" >
+    	insert into user_recruit
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	      <if test="id != null" >
+	        id,
+	      </if>
+	      <if test="name != null" >
+	        name,
+	      </if>
+	      <if test="cityName != null" >
+	        city_name,
+	      </if>
+	      <if test="phone != null" >
+	        phone,
+	      </if>
+	      <if test="createTime != null" >
+	        create_time,
+	      </if>
+	      <if test="stats != null" >
+	        stats,
+	      </if>
+	      <if test="visitTime != null" >
+	        visit_time,
+	      </if>
+	      <if test="visitName != null" >
+	        visit_name,
+	      </if>
+	      <if test="type != null" >
+	        type,
+	      </if>
+	      <if test="visitSyn != null" >
+	        visit_syn,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="id != null" >
+	        #{id,jdbcType=BIGINT},
+	      </if>
+	      <if test="name != null" >
+	        #{name,jdbcType=VARCHAR},
+	      </if>
+	      <if test="cityName != null" >
+	        #{cityName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="phone != null" >
+	        #{phone,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createTime != null" >
+	        #{createTime},
+	      </if>
+	      <if test="stats != null" >
+	        #{stats,jdbcType=BIGINT},
+	      </if>
+	      <if test="visitTime != null" >
+	        #{visitTime},
+	      </if>
+	      <if test="visitName != null" >
+	        #{visitName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="type != null" >
+	        #{type,jdbcType=BIGINT},
+	      </if>
+	      <if test="visitSyn != null" >
+	        #{visitSyn,jdbcType=VARCHAR},
+	      </if>
+	    </trim>
+  </insert>
+	
+</mapper>

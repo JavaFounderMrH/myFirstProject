@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.room.RoomPriceCalendarDao">
+	<select id="queryRoomPriceCalendarPrice" parameterType="RoomPriceCalendar"
+		resultType="RoomPriceCalendar">
+		SELECT
+		round(a.price/(1-IFNULL(b.commission_proportion,0)/100),0) as price,
+		a.discount as discount,
+		a.price_type
+		as priceType
+		FROM
+		shb_room_price_calendar a
+		LEFT JOIN
+		shb_room_info b ON a.sri_rid = b.sri_id
+		WHERE
+		a.sri_rid = #{sriRid}
+		AND a.is_delete = 1
+		AND DATE_FORMAT(a.time, '%Y-%m-%d') =
+		DATE_FORMAT(NOW(), '%Y-%m-%d')
+	</select>
+	<select id="queryRoomNumsCount" parameterType="RoomPriceCalendar"
+		resultType="RoomPriceCalendar">
+		SELECT
+		DISTINCT
+		a.nums as nums,a.sri_rid as sriRid
+		FROM
+		`shb_room_price_calendar` a
+		WHERE
+		DATE_FORMAT(a.time, '%Y-%m-%d')
+		BETWEEN DATE_FORMAT(#{startTime}, '%Y-%m-d')
+		AND
+		DATE_FORMAT(#{endTime}, '%Y-%m-%d') and a.is_delete = 1 GROUP BY
+		a.sri_rid HAVING SUM(a.nums) = 0
+	</select>
+	<select id="queryRoomPriceCalendarPriceDetails" parameterType="RoomPriceCalendar"
+		resultType="RoomPriceCalendar">
+		SELECT
+		DISTINCT
+		DATE_FORMAT(a.time, '%Y-%m-%d') AS time,
+		round(a.price/(1-IFNULL(b.commission_proportion,0)/100),0) AS price,
+		CASE dayofweek(
+		DATE_FORMAT(a.time, '%Y-%m-%d')
+		)
+		WHEN 1 THEN
+		'周日'
+		WHEN 2 THEN
+		'周一'
+		WHEN 3 THEN
+		'周二'
+		WHEN 4 THEN
+		'周三'
+		WHEN 5 THEN
+		'周四'
+		WHEN 6 THEN
+		'周五'
+		WHEN 7 THEN
+		'周六'
+		END AS weekDate
+		FROM
+		shb_room_price_calendar a
+		LEFT JOIN
+		shb_room_info b ON a.sri_rid = b.sri_id
+		WHERE
+		a.is_delete = 1
+		<if test = "sriRid != null and sriRid != ''">
+		AND a.sri_rid = #{sriRid}
+		</if>
+		<if test = "Overnight == 1">
+		AND DATE_FORMAT(a.time, '%Y-%m-%d') &gt;=  DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+        AND DATE_FORMAT(a.time, '%Y-%m-%d') &lt; DATE_FORMAT(#{endTime}, '%Y-%m-%d')
+		</if>
+		<if test = "Overnight == 2">
+		AND DATE_FORMAT(a.time, '%Y-%m-%d') BETWEEN  DATE_FORMAT(#{startTime}, '%Y-%m-%d') AND DATE_FORMAT(#{endTime}, '%Y-%m-%d')
+		</if>
+	</select>
+	<update id="updatePrice" parameterType="ShbOrderInfo">
+		UPDATE
+		shb_room_price_calendar
+		SET nums = nums + #{reserveNumber}
+		WHERE
+		sri_rid
+		= #{sriRid}
+        <if test="flag==1">
+		AND DATE_FORMAT(time, '%Y-%m-%d') &gt;=  #{startTime} AND DATE_FORMAT(time, '%Y-%m-%d') &lt; #{endTime}
+		</if>
+		<if test="flag==2">
+		AND DATE_FORMAT(time, '%Y-%m-%d') BETWEEN  #{startTime} AND  #{endTime}
+		</if>	
+	</update>
+</mapper>

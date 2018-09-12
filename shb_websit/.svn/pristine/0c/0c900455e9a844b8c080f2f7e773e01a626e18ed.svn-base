@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.room.RoomCollectionDao">
+	<resultMap id="BaseResultMap" type="com.shb.web.mobile.room.RoomCollection">
+		<id column="src_id" property="srcId" jdbcType="BIGINT" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="sri_rid" property="sriRid" jdbcType="BIGINT" />
+	</resultMap>
+	<!-- 根据用户名和房间ID查询房间收藏-->
+	<select id="queryRoomCollection" parameterType="RoomCollection" resultType="RoomCollection">
+		SELECT
+		*
+		FROM
+		shb_room_collection a
+		WHERE
+		a.username = #{username}
+		AND a.sri_rid = #{sriRid}
+		GROUP BY a.sri_rid
+	</select>
+</mapper>

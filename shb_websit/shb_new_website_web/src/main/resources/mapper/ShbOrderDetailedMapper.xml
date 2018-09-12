@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.order.ShbOrderDetailedMapper">
+
+	<insert id="insertSelective" parameterType="com.shb.web.mobile.order.ShbOrderDetailed">
+		insert into shb_order_detailed
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="detailedId != null">
+				detailed_id,
+			</if>
+			<if test="time != null">
+				time,
+			</if>
+			<if test="weekDate != null">
+				week_date,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="orderId != null">
+				order_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="detailedId != null">
+				#{detailedId,jdbcType=BIGINT},
+			</if>
+			<if test="time != null">
+				#{time},
+			</if>
+			<if test="weekDate != null">
+				#{weekDate,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DOUBLE},
+			</if>
+			<if test="orderId != null">
+				#{orderId,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+	<select id="queryShbOderPriceDetails" parameterType="RoomPriceCalendar"
+		resultType="RoomPriceCalendar">
+		SELECT
+		DISTINCT
+		DATE_FORMAT(a.time, '%Y-%m-%d') AS time,
+		a.price AS price,
+		a.week_date
+		FROM
+		shb_order_detailed a
+		WHERE
+		1 =1 
+		<if test="orderId != null and orderId!=''">
+			AND a.order_id = #{orderId}
+			</if>
+	</select>
+</mapper>

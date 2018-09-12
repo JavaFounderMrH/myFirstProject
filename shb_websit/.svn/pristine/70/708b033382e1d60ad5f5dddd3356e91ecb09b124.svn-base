@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.room.RoomEvaluateDao">
+	<select id="queryRoomEvaluateInfo" parameterType="RoomEvaluate"
+		resultType="RoomEvaluate">
+		SELECT AVG(a.score) from shb_room_evaluate a where
+		a.is_delete = 1 and
+		a.sri_rid = #{sriRid}
+	</select>
+
+	<select id="queryUserRoomEvaluate" parameterType="long"
+		resultType="User">
+		SELECT
+		(
+		SELECT
+		COUNT(a.sre_id)
+		FROM
+		shb_room_evaluate a
+		WHERE
+		a.sri_rid = #{sriRid}
+		AND a.is_delete = 1
+		) AS evaluateCount,
+		a.sre_id AS sreId,
+		IFNULL(
+		a.head_portrait,
+		b.head_portrait
+		) AS headPortrait,
+		IFNULL(a.username, b.nickname) AS nickname,
+		IFNULL(
+		DATE_FORMAT(
+		a.evaluate_time,
+		'%Y-%m-%d %H:%i:%s'
+		),
+		DATE_FORMAT(
+		a.create_time,
+		'%Y-%m-%d %H:%i:%s'
+		)
+		) AS createTime,
+		a.score AS score,
+		a.content AS content
+		FROM
+		shb_room_evaluate a
+		LEFT JOIN shb_user_info b ON a.sui_rid = b.user_id
+		WHERE
+		a.is_delete = 1
+		AND a.sri_rid = #{sriRid}
+		ORDER BY
+		createTime DESC
+	</select>
+	<select id="queryRoomEvaluatePicture" parameterType="long"
+		resultType="RoomEvaluatePicture">
+
+		SELECT a.src as src from shb_room_evaluate_picture a where
+		a.sre_rid = #{sreRid} and a.is_delete = 1
+	</select>
+	<!-- 添加评论 -->
+	<insert id="insertSelective" parameterType="RoomEvaluate"
+		keyProperty="sreId">
+		insert into shb_room_evaluate
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="sreId != null">
+				sre_id,
+			</if>
+			<if test="score != null">
+				score,
+			</if>
+			<if test="sriRid != null">
+				sri_rid,
+			</if>
+			<if test="suiRid != null">
+				sui_rid,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="operator != null">
+				operator,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="soiRid != null">
+				soi_rid,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sreId != null">
+				#{sreId,jdbcType=BIGINT},
+			</if>
+			<if test="score != null">
+				#{score,jdbcType=TINYINT},
+			</if>
+			<if test="sriRid != null">
+				#{sriRid,jdbcType=BIGINT},
+			</if>
+			<if test="suiRid != null">
+				#{suiRid,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="operator != null">
+				#{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime},
+			</if>
+			<if test="soiRid != null">
+				#{soiRid,jdbcType=BIGINT},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+		<selectKey resultType="java.lang.Long" order="AFTER"
+			keyProperty="sreId">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<!--查询订单评价 -->
+	<select id="queryUserRoomEvaluateOrder" parameterType="User"
+		resultType="User">
+		SELECT
+		a.score AS score,
+		a.content AS content,
+		DATE_FORMAT(a.create_time, '%Y-%m-%d %H:%i:%s') AS createTime,
+		a.sre_id AS sreId
+		FROM
+		shb_room_evaluate a
+		LEFT JOIN shb_user_info b ON a.sui_rid = b.user_id
+		LEFT JOIN shb_order_info so ON so.sri_rid = a.sri_rid
+		WHERE
+		a.soi_rid = #{soiRid}
+		AND b.username = #{username}
+		AND so.state IN (5)
+		GROUP BY a.sre_id 
+	</select>
+	<select id="queryRoomEvaluateListByUsername" parameterType="java.lang.String" resultType="RoomEvaluate">
+		SELECT
+		IFNULL(b.head_portrait,f.head_portrait) AS headPortrait,
+		b.create_time AS createTime,
+		b.score AS score,
+		b.sri_rid AS sriRid,
+		d.room_title AS roomTitle,
+		b.content AS content,
+		GROUP_CONCAT(c.src) AS src,
+		d.room_status AS roomStatus,
+		b.sui_rid AS suiRid,
+		IFNULL(b.username,f.nickname) AS username
+		FROM
+		shb_room_evaluate b
+		LEFT JOIN shb_room_evaluate_picture c ON b.sre_id = c.sre_rid
+		LEFT JOIN shb_room_info d ON b.sri_rid = d.sri_id
+		LEFT JOIN shb_user_info f ON b.sui_rid = f.user_id
+		WHERE
+		b.is_delete = 1
+		AND find_in_set(
+		b.sri_rid,
+		(
+			SELECT
+				GROUP_CONCAT(a.sri_id)
+			FROM
+				shb_room_info a
+			WHERE
+				a.room_upload = #{username}
+		)
+		)
+		GROUP BY
+		b.sre_id
+		ORDER BY
+		b.create_time DESC	
+  </select>
+</mapper>

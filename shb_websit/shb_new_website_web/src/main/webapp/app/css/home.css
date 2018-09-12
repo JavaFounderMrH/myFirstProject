@@ -1,0 +1,405 @@
+/*  ==      home    ==  */
+#homeBanner{
+    width: 100%;
+    margin-top: 0.435rem;
+}
+#homeBanner .swiper-slide{
+    width: 100%;
+    height: 2rem;
+}
+.banner1{
+    background: url("../img/home/banner1.png") no-repeat;
+    background-size: cover;
+}
+.banner2{
+    background: url("../img/home/banner2.png") no-repeat;
+    background-size: cover;
+}
+.banner3{
+    background: url("../img/home/banner3.png") no-repeat;
+    background-size: cover;
+}
+.banner4{
+    background: url("../img/home/banner4.png") no-repeat;
+    background-size: cover;
+}
+#homeBanner .swiper-pagination-bullet {
+    width: 0.05rem;
+    height: 0.05rem;
+    opacity: 1;
+    margin: 0 0.045rem;
+    background: rgba(255,255,255,0.8);
+}
+#homeBanner .swiper-pagination-bullet-active {
+    width: 0.18rem;
+    opacity: 1;
+    background: rgba(255,255,255,1);
+    border-radius: 20px;
+}
+.fangyuan{
+    width: 94.66%;
+    margin: 0 0.1rem;
+}
+.fangyuan h2, .fangxing h2{
+    font-size: 0.17rem;
+    margin: 0.2rem auto;
+    text-align: center;
+    font-family: '微软雅黑';
+}
+.minsuImg{
+    width: 100%;
+}
+.minsuImg li{
+	margin-bottom: 0.05rem;
+}
+.sanya, .chengdu, .hangzhou, .shanghai{
+    width: 1.025rem;
+    height: 0.505rem;
+}
+.sanya{
+    background: url("../img/home/sanya.png") no-repeat;
+    background-size: cover;
+}
+.chengdu{
+    background: url("../img/home/chengdu.png") no-repeat;
+    background-size: cover;
+}
+.hangzhou{
+    background: url("../img/home/hangzhou.png") no-repeat;
+    background-size: cover;
+}
+.shanghai{
+    background: url("../img/home/shanghai.png") no-repeat;
+    background-size: cover;
+}
+.beijing{
+    width: 1.41rem;
+    height: 1.055rem;
+    background: url("../img/home/beijing.png") no-repeat;
+    background-size: cover;
+}
+.yantai, .qingdao{
+    width: 1.75rem;
+    height: 0.85rem;
+}
+.yantai{
+    background: url("../img/home/yantai.png") no-repeat;
+    background-size: cover;
+}
+.qingdao{
+    background: url("../img/home/qingdao.png") no-repeat;
+    background-size: cover;
+}
+.haerbin{
+    width: 2.485rem;
+    height: 1.045rem;
+    background: url("../img/home/haerbin.png") no-repeat;
+    background-size: cover;
+}
+.weihai{
+    width: 1.015rem;
+    height: 1.045rem;
+    background: url("../img/home/weihai.png") no-repeat;
+    background-size: cover;
+}
+.marg_r{
+    margin-right: 0.05rem;
+}
+.sanya, .hangzhou{
+    margin-bottom: 0.035rem;
+}
+#fangxingBanner{
+    width: 94.66%;
+    padding: 0 0.1rem;
+}
+#fangxingBanner a{
+    width: 1.5rem;
+    height: 2.1rem;
+    margin-right: 0.05rem;
+}
+#fangxingBanner a:nth-last-child(1){
+    margin-right: 0;
+}
+.fangxing1{
+    background: url("../img/home/fangxing1.png") no-repeat;
+    background-size: cover;
+}
+.fangxing2{
+    background: url("../img/home/fangxing2.png") no-repeat;
+    background-size: cover;
+}
+.fangxing3{
+    background: url("../img/home/fangxing3.png") no-repeat;
+    background-size: cover;
+}
+.fangxing4{
+    background: url("../img/home/fangxing4.png") no-repeat;
+    background-size: cover;
+}
+.fangxing5{
+    background: url("../img/home/fangxing5.png") no-repeat;
+    background-size: cover;
+}
+.fangxing6{
+    background: url("../img/home/fangxing6.png") no-repeat;
+    background-size: cover;
+}
+.fangxing7{
+    background: url("../img/home/fangxing7.png") no-repeat;
+    background-size: cover;
+}
+.fangxing8{
+    background: url("../img/home/fangxing8.png") no-repeat;
+    background-size: cover;
+}
+.fangxing9{
+    background: url("../img/home/fangxing9.png") no-repeat;
+    background-size: cover;
+}
+.homeList1{
+    width: 100%;
+    padding: 0.15rem 0;
+}
+.homeList1 li{
+    width: 100%;
+    height: 1.3rem;
+    margin-top: 0.05rem;
+    padding-top: 0.3rem;
+}
+.homeList1 li:nth-child(1){
+    background: url("../img/home/homeList1_bg1.png") no-repeat;
+    background-size: cover;
+}
+.homeList1 li:nth-child(2){
+    background: url("../img/home/homeList1_bg2.png") no-repeat;
+    background-size: cover;
+}
+.homeList1 li:nth-child(3){
+    height: 1.41rem;
+    padding-top: 0.19rem;
+    background: url("../img/home/homeList1_bg3.png") no-repeat;
+    background-size: cover;
+}
+.homeList1 li h3{
+    font-size: 0.18rem;
+    color: #000;
+    margin: 0 0 0.15rem 0.15rem;
+    text-indent: 0.35rem;
+    font-family: '微软雅黑';
+}
+.homeList1 li:nth-child(1) h3{
+    background: url("../img/home/homeList1_h31.png") no-repeat;
+    background-size: contain;
+}
+.homeList1 li:nth-child(2) h3{
+    background: url("../img/home/homeList1_h32.png") no-repeat;
+    background-size: contain;
+}
+.homeList1 li:nth-child(3) h3{
+    background: url("../img/home/homeList1_h33.png") no-repeat;
+    background-size: contain;
+    margin: 0 0 0.1rem 0.15rem;
+}
+.homeList1 li p{
+    color: #777;
+    margin-left: 0.15rem;
+}
+.homeList2{
+    width: 100%;
+    height: 0.83rem;
+    background: #40d8d7;
+    color: #fff;
+    text-align: center;
+    font-family: '微软雅黑';
+}
+.homeList2 h3{
+    font-size: 0.18rem;
+    padding-top: 0.175rem;
+}
+.homeList2 p{
+    color: #b3ffff;
+    margin-top: 0.1rem;
+}
+.homeList3{
+    width: 100%;
+    padding: 0.1rem 0 0.15rem 0;
+}
+.homeList3 li{
+    width: 100%;
+    height: 1.415rem;
+}
+.homeList3 li:nth-child(1){
+    background: url("../img/home/homeList3_bg1.png") no-repeat;
+    background-size: cover;
+}
+.homeList3 li:nth-child(2){
+    background: url("../img/home/homeList3_bg2.png") no-repeat;
+    background-size: cover;
+}
+.homeList3 li:nth-child(3){
+    background: url("../img/home/homeList3_bg3.png") no-repeat;
+    background-size: cover;
+}
+.homeList3 li h3{
+    font-size: 0.18rem;
+    font-family: '微软雅黑';
+    margin-left: 1.95rem;
+    padding-top: 0.2rem;
+    margin-bottom: 0.075rem;
+}
+.homeList3 li:nth-child(2) h3 , .homeList3 li:nth-child(3) h3 {
+	padding-top: 0.275rem;
+}
+.homeList3 li p{
+    color: #777;
+    margin-left: 1.95rem;
+}
+.zengzhi{
+    width: 100%;
+    height: 1.175rem;
+    background: url("../img/home/zengzhiImg.png") no-repeat;
+    background-size: cover;
+}
+.yewu{
+    width: 100%;
+    height: 1.675rem;
+    padding-top: 0.15rem;
+    background: url("../img/home/yewuBg.png") no-repeat;
+    background-size: cover;
+    margin: 0.1rem 0 0.25rem 0;
+}
+.yewu h3{
+    height: 0.33rem;
+    background: url("../img/home/yewuH3.png") no-repeat 50% center;
+    background-size: contain;
+    margin-bottom: 0.05rem;
+}
+.yewu ul li{
+    font-size: 0.14rem;
+    font-family: '微软雅黑';
+    color: #666;
+    margin-bottom: 0.1rem;
+}
+.yewu ul li span{
+    display: block;
+    width: 0.05rem;
+    height: 0.05rem;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    background: url("../img/home/yewu_dian.png") no-repeat;
+    background-size: contain;
+}
+.yewu ul li:nth-child(1) span{
+    margin-bottom: 0.15rem;
+}
+.yewu ul li:nth-child(2) span{
+    margin-bottom: 0.15rem;
+}
+.yewu ul li p{
+    padding-right: 0.175rem;
+}
+.chanpin h3{
+    height: 0.33rem;
+    background: url("../img/home/chanpinH3.png") no-repeat 50% center;
+    background-size: contain;
+    margin-bottom: 0.11rem;
+}
+#chanpinBanner{
+    padding-left: 0.05rem;
+    padding-bottom: 0.1rem;
+}
+#chanpinBanner .swiper-slide{
+    width: 1.6rem;
+    height: 2.74rem;
+    margin-right: 0.05rem;
+}
+#chanpinBanner .swiper-slide img{
+	width: 1.6rem;
+    height: 2.74rem;
+}
+.zixun{
+    height: 0.455rem;
+    background: #40d8d7;
+    margin-bottom: 0.1rem;
+    font-size: 0.15rem;
+    color: #fff;
+    padding: 0.19rem 0;
+}
+.zixun a{
+	color: #fff;
+}
+.zixun p{
+    text-indent: 0.3rem;
+    margin-left: 0.2rem;
+}
+.zixun p:nth-child(1){
+    background: url("../img/home/zixun1.png") no-repeat left top;
+    background-size: contain;
+    margin-bottom: 0.07rem;
+}
+.zixun p:nth-child(2){
+    background: url("../img/home/zixun2.png") no-repeat left top;
+    background-size: contain;
+}
+.ziyuan h3{
+    height: 1rem;
+    background: url("../img/home/ziyuan_bg1.png") no-repeat;
+    background-size: cover;
+    margin-bottom: 0.1rem;
+}
+.ziyuan1{
+    margin-bottom: 0.125rem;
+}
+.ziyuan1 .ziyuanImg1{
+    display: inline-block;
+    width: 1.76rem;
+    height: 2.65rem;
+    background: url("../img/home/ziyuan_bg2.png") no-repeat;
+    background-size: cover;
+}
+.ziyuan2{
+    margin-bottom: 0.1rem;
+}
+.ziyuan2 .ziyuanImg2{
+    display: inline-block;
+    width: 1.855rem;
+    height: 1.12rem;
+    background: url("../img/home/ziyuan_bg3.png") no-repeat;
+    background-size: cover;
+    margin-left: 0.1rem;
+}
+.ziyuan3{
+    height: 3.27rem;
+    background: url("../img/home/ziyuan_bg4.png") no-repeat;
+    background-size: cover;
+}
+.ziyuan1 ul, .ziyuan2 ul{
+    width: 2rem;
+}
+.ziyuan1 ul li, .ziyuan2 ul li{
+    font-size: 0.14rem;
+    color: #666;
+    margin-left: 0.1rem;
+    text-indent: 0.3rem;
+    margin-top: 0.15rem;
+    line-height: 0.23rem;
+    margin-right: 0.13rem;
+    position: relative;
+}
+.ziyuan1 ul li:nth-child(1){
+    margin-top: 0;
+}
+.ziyuan1 ul li span, .ziyuan2 ul li span{
+    position: absolute;
+    left: 0;
+    top: 0.06rem;
+    display: inline-block;
+    width: 0.12rem;
+    height: 0.12rem;
+    background: url("../img/home/ziyuan_liBg.png") no-repeat center;
+    background-size: contain;
+}
+.ziyuan2 ul li{
+    margin-left: 0.18rem;
+    margin-top: 0;
+}

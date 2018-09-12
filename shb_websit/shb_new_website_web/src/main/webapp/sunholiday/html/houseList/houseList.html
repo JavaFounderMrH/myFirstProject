@@ -1,0 +1,295 @@
+<link rel="stylesheet" type="text/css" href="sunholiday/css/houseList.css">
+<script type="text/javascript" src="sunholiday/js/main.js"></script>
+<script type="text/javascript" src="sunholiday/js/houseList/houseList.js"></script>
+<!--==========    二级页   房源列表  ==========-->
+<!-- 头部 - 共同部分 -->
+<header class="head_wrap rowBetween">
+    <div class="rowStart head_l">
+        <a data-ui-sref="home"></a>
+        <a data-ui-sref="home"></a>
+    </div>
+    <nav class="rowStart head_r">
+        <a data-ui-sref="home" id="home">首页</a>
+        <a data-ui-sref="product">产品介绍</a>
+        <a data-ui-sref="ziying">自营品牌</a>
+        <a class="guanyuWomen">关于我们</a>
+        <nav class="columnStart head_nav">
+            <a data-ui-sref="gongsi">公司介绍</a>
+            <a data-ui-sref="news">新闻中心</a>
+            <a href="http://company.zhaopin.com/CC295267788.htm" target="_blank">加入我们</a>
+            <a data-ui-sref="lianxiWomen">联系我们</a>
+        </nav>
+    </nav>
+    <nav class="rowStart head_user">
+    	<a id="login" class="LoginHover">登录</a>•
+    	<a id="register" class="LoginHover">注册</a>
+    	<span class="fangyuan" id="fangyuan">免费发布房源</span>
+    </nav>
+</header>
+<!-- houseList主体 -->
+<div class="houseListWrapWrap">
+	<div class="houseListWrap">
+		<!-- 面包屑 -->
+		<nav class="houseListTop"><a data-ui-sref="home">山海边</a> ＞ <span>酒店民宿公寓</span><span class="houseTwoleName"></span><span class="diliName"></span></nav>
+		<!-- 快速找房 -->
+		<div class="houseFastSearchWrap">
+			<form class="fastWrap rowStart">
+				<input class="fastSearch fastSearch1" custom="2" type="text" placeholder="地理位置/房东昵称/房源标题">
+				<input class="fastSearch fastSearch2" type="text" placeholder="选择入住-离开日期" readonly="readonly" id="calanderFast">
+				<button class="submit">搜索山海边</button>
+			</form>
+			<!-- 热门城市或是百度数据 -->
+			<div class="cityWrap">
+				<h3>热门城市</h3>
+				<nav id="hot">
+				
+				</nav>
+				<h3>全部城市</h3>
+				<nav id="city">
+					
+				</nav>
+			</div>
+			<!-- 地理位置 -->
+			<div class="geoPositionWrap">
+				<div >
+					<h3>地理位置</h3>
+					<nav id="geoPosition"></nav>
+				</div>
+				<div id="geoPositionLan">
+					
+				</div>
+				<div id="geoPositionRoom">
+					
+				</div>
+			</div>
+			<!-- 未找到相关内容 -->
+			<div class="geoPositionNot">未找到相关内容，输入其他内容试试～</div>
+			<!-- 入住-离店日期 -->
+			<div class="calanderDate"></div>
+		</div>
+		<!-- 条件搜索 -->
+		<div class="houseSearchWrap columnStart">
+			<div class="weizhiWrap">
+				<span>位置</span>
+				<nav class="weizhi">
+					<div class="weizhiList">
+						
+					</div>
+					<!-- 地理位置搜索结果 -->
+					<div class="weizhiData">
+						<div class="weizhiDataOne">
+							
+						</div>
+						<div class="weizhiDataTwo">
+							<!-- <a class="weizhiDataSel">一号线</a> -->
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="huxingWrap">
+				<span>户型</span>
+				<div>
+					<label for="huxing1"><input type="radio" name="huxing" id="huxing1" value="1"><span>一居</span></label>
+					<label for="huxing2"><input type="radio" name="huxing" id="huxing2" value="2"><span>两居</span></label>
+					<label for="huxing3"><input type="radio" name="huxing" id="huxing3" value="3"><span>三居及以上</span></label>
+				</div>
+			</div>
+			<div class="fangxingWrap">
+				<span>房型</span>
+				<div>
+					<label for="fangxing1"><input type="radio" name="fangxing" id="fangxing1" value="1"><span>酒店式公寓</span></label>
+					<label for="fangxing2"><input type="radio" name="fangxing" id="fangxing2" value="2"><span>民居</span></label>
+					<label for="fangxing3"><input type="radio" name="fangxing" id="fangxing3" value="3"><span>客栈</span></label>
+					<label for="fangxing4"><input type="radio" name="fangxing" id="fangxing4" value="4"><span>青旅</span></label>
+					<label for="fangxing5"><input type="radio" name="fangxing" id="fangxing5" value="5"><span>别墅</span></label>
+					<label for="fangxing6"><input type="radio" name="fangxing" id="fangxing6" value="6"><span>旅馆</span></label>
+					<label for="fangxing7"><input type="radio" name="fangxing" id="fangxing7" value="7"><span>四合院</span></label>
+					<label for="fangxing8"><input type="radio" name="fangxing" id="fangxing8" value="8"><span>木屋</span></label>
+					<label for="fangxing9"><input type="radio" name="fangxing" id="fangxing9" value="9"><span>房车</span></label>
+					<label for="fangxing10"><input type="radio" name="fangxing" id="fangxing10" value="10"><span>海边小屋</span></label>
+					<label for="fangxing11"><input type="radio" name="fangxing" id="fangxing11" value="11"><span>林间小屋</span></label>
+				</div>
+			</div>
+			<div class="peizhiWrap">
+				<span>配置</span>
+				<div>
+					<label for="peizhi1"><input type="checkbox" name="peizhi" id="peizhi1" value = "2"><span>无线网络</span></label>
+					<label for="peizhi2"><input type="checkbox" name="peizhi" id="peizhi2" value = "6"><span>洗衣机</span></label>
+					<label for="peizhi3"><input type="checkbox" name="peizhi" id="peizhi3" value = "7"><span>空调</span></label>
+					<label for="peizhi4"><input type="checkbox" name="peizhi" id="peizhi4" value = "8"><span>暖气</span></label>
+					<label for="peizhi5"><input type="checkbox" name="peizhi" id="peizhi5" value = "11"><span>拖鞋</span></label>
+					<label for="peizhi6"><input type="checkbox" name="peizhi" id="peizhi6" value = "15"><span>允许做饭</span></label>
+					<label for="peizhi7"><input type="checkbox" name="peizhi" id="peizhi7" value = "16"><span>全天热水</span></label>
+					<label for="peizhi8"><input type="checkbox" name="peizhi" id="peizhi8" value = "17"><span>浴缸</span></label>
+					<label for="peizhi9"><input type="checkbox" name="peizhi" id="peizhi9" value = "33"><span>电梯</span></label>
+				</div>
+			</div>
+		</div>
+		<!-- 自营广告位 -->
+		<a class="houseListZImg" data-ui-sref="ziying"></a>
+		<!-- 未找到 -->
+		<div class="fangyuanNotWrap">
+			<div class="fangyuanNot">
+				
+			</div>
+		</div>
+		<!-- 房源列表 -->
+		<div class="fangyuanliebiao">
+			<!-- 价格、评分排序选择 -->
+			<div class="sortWrap">
+				<span>推荐排序</span>
+				<span>价格</span>
+				<span>评分</span>
+			</div>
+			<!-- 列表数据 -->
+			<ul id="houseList">
+				<!-- <a>
+					<div class="h_img">
+						<img src="sunholiday/image/home/banner1.png">
+						<p>查看更多房源图片</p>
+					</div>
+					<div class="h_info">
+						<p class="h_info_tit">
+							<span>北京行之家酒店公寓长安驿站套房家酒店公北北</span>
+							<span>¥298</span>
+						</p>
+						<p class="h_info_type">整套出租／3室1厅1卫1厨1阳／3床／宜住6人</p>
+						<p class="h_info_pos">
+							<span>丰台区</span>
+							<span>距离搜索位置980M</span>
+						</p>
+						<div class="h_info_peo">
+							<p>
+								<img src="sunholiday/image/home/banner1.png">
+								<span>北京行之家酒店公寓</span>
+							</p>
+							<nav>
+								<img title="山海边在线担保，无需支付押金" src="sunholiday/image/houseList/colT1.png">
+								<img title="山海边摄像师上门实拍，百分百展示房源" src="sunholiday/image/houseList/colT2.png">
+								<img title="山海边实地考察，保证房源真实性" src="sunholiday/image/houseList/colT3.png">
+								<img title="入住房客全5分好评，品质好房" src="sunholiday/image/houseList/colT4.png">
+							</nav>
+						</div>
+					</div>
+				</a> -->
+			</ul>
+			<div class="box">
+				<div id="pagination4" class="page fl"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 悬浮框 - 共同部分 -->
+<div class="subNav">
+    <div class="sub_l">
+    	<div class="sub_l_img sub_l_com">
+	    	<a class="quitWrap">
+				<img src="sunholiday/image/quit.png" class="quit subQuit" data-num="0">
+			</a>
+    		<div>
+    			<img src="sunholiday/image/home/foot_1_1.png">
+                <p>扫码下载山海边APP</p>
+    		</div>
+    		<div>
+    			<img src="sunholiday/image/home/foot_1_2.png">
+                <p>扫码关注山海边订阅号</p>
+    		</div>
+    	</div>
+    	<div class="sub_l_tel sub_l_com">
+	    	<a class="quitWrap">
+				<img src="sunholiday/image/quit.png" class="quit subQuit" data-num="1">
+			</a>
+    		<div>
+    			<p>房客服务热线</p>
+    			<span>400-150-0599</span>
+    		</div>
+    		<i></i>
+    		<div>
+    			<p>业务服务热线</p>
+    			<span>010-56138614 刘先生</span>
+    		</div>
+    		<i></i>
+    		<div>
+    			<p>业务合作微信</p>
+    			<span>shanhaibian2017</span>
+    		</div>
+    		<i></i>
+    		<div>
+    			<p>简历投递邮箱</p>
+    			<span>hr@shanhaibian.com</span>
+    		</div>
+    	</div>
+    	<div class="sub_l_yijian sub_l_com">
+    		<a class="quitWrap">
+				<img src="sunholiday/image/quit.png" class="quit subQuit" data-num="3">
+			</a>
+    		<h3>意见反馈</h3>
+    		<textarea placeholder="您对山海边有任何意见，或者在山海边的APP、官网、订阅号等平台使用过程中遇到问题，请在本页反馈。" id="yijianTxt" maxlength="300"></textarea>
+    		<textarea placeholder="留下您的手机号/固定电话/QQ/微信/邮箱等任意一种联系方式，方便我们及时给您回复。" id="yijianTel"></textarea>
+    		<p id="yijianTip">联系方式不能为空</p>
+    		<button id="yijianSubmit">提交反馈</button>
+    	</div>
+    	<div class="sub_l_fankui sub_l_com">
+    		<a class="quitWrap">
+				<img src="sunholiday/image/quit.png" class="quit subQuit">
+			</a>
+    		<img src="sunholiday/image/home/sub_l_fankui.png" class="sub_l_fankui_img">
+    		<h3>反馈已提交</h3>
+    		<p>山海边重视您的每一个问题，您的反馈就是我们进步的动力</p>
+			<p>请耐心等待，工作人员将尽快与您联系。</p>
+			<button id="fankuiBtn">我知道了</button>
+    	</div>
+    </div>
+    <ul class="sub_r">
+        <li><img src="sunholiday/image/home/com_erweima.png"></li>
+        <li><img src="sunholiday/image/home/com_tel.png"></li>
+        <li><a href="https://weibo.com/lvshb?refer_flag=1001030101_&is_all=1" target="_blank"><img src="sunholiday/image/home/com_weibo.png"></a></li>
+        <li><img src="sunholiday/image/home/com_yijian.png"></li>
+    </ul>
+</div>
+<!-- 网站脚部 - 共同部分 -->
+<footer class="footer">
+    <div class="rowBetween">
+        <div class="rowStart">
+            <div class="foot_1 rowCenter">
+                <dl>
+                    <dt>
+                        <img src="sunholiday/image/home/foot_1_1.png">
+                    </dt>
+                    <dd>扫码下载APP</dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <img src="sunholiday/image/home/foot_1_2.png">
+                    </dt>
+                    <dd>扫码关注订阅号</dd>
+                </dl>
+            </div>
+            <ul class="foot_2">
+                <li>电话：<a>400-150-0599</a></li>
+                <li>邮箱：<a>severs@shanhaibian.com</a></li>
+                <li>地址：<a>北京市丰台区南三环万兴大厦B座5层</a></li>
+            </ul>
+        </div>
+        <div class="rowStart">
+            <ul class="foot_3">
+                 <li><a href="https://weibo.com/lvshb?refer_flag=1001030101_&is_all=1" target="_blank">关注新浪微博</a></li>
+                <li><a href="https://itunes.apple.com/cn/app/ji-xun-xin-wen/id1268508944?mt=8" target="_blank">下载苹果版APP</a></li>
+                <li><a href="http://shanhaibian.com/shb_mobile_backend_web/shb_v1.apk">下载安卓版APP</a></li>
+            </ul>
+            <ul class="foot_4">
+                <li><a data-ui-sref="home">首页</a></li>
+                <li><a data-ui-sref="gongsi">公司简介</a></li>
+                <li><a data-ui-sref="product">产品介绍</a></li>
+                <li><a data-ui-sref="news">新闻中心</a></li>
+                <li><a data-ui-sref="ziying">自营品牌</a></li>
+                <li><a href="http://company.zhaopin.com/CC295267788.htm" target="_blank">加入我们</a></li>
+                <li><a class="fangyuan">发布房源</a></li>
+                <li><a data-ui-sref="lianxiWomen">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyRight">
+        <p>山海边(北京)电子商务股份有限公司 京ICP备15045556号-1</p>
+    </div>
+</footer>

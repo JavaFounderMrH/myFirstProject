@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.activity.ShbPcHotCityMapper" >
+  <sql id="Base_Column_List" >
+    id, city_name, city_describe, city_img, operator, create_time, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultType="ShbPcHotCity" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from shb_pc_hot_city
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="queryShbPcHotCityList" resultType="ShbPcHotCity" >
+    select 
+    <include refid="Base_Column_List" />
+    from shb_pc_hot_city <!-- ORDER BY sort DESC -->
+  </select>
+</mapper>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title ng-bind="title">山海边短租-专注于提供美好旅宿|民宿,公寓,酒店,客栈,别墅预订平台</title>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../css/twolevel.css">
+    <link rel="stylesheet" type="text/css" href="../../css/houseDetails.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/jquery.pagination.css">
+    <!--title小图标-->
+    <link rel="icon" href="../../image/homeIco.ico" type="image/x-icon"/>
+
+    <script type="text/javascript" src="../../lib/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../../lib/layui/layui.all.js"></script>
+	<!-- <script type="text/javascript" src="../../lib/js/angular.min.js"></script>
+    <script type="text/javascript" src="../../lib/js/angular-ui-router.min.js"></script> -->
+</head>
+<body>
+	<!--==========    二级页   房源列表  ==========-->
+	<!-- 头部 - 共同部分 -->
+	<header class="head_wrap rowBetween">
+	    <div class="rowStart head_l">
+	        <a href="../../../index.html#/home"></a>
+	        <a href="../../../index.html#/home"></a>
+	    </div>
+	    <nav class="rowStart head_r">
+	        <a href="../../../index.html#/home" id="home">首页</a>
+	        <a href="../../../index.html#/product">产品介绍</a>
+	        <a href="../../../index.html#/ziying">自营品牌</a>
+	        <a class="guanyuWomen">关于我们</a>
+	        <nav class="columnStart head_nav">
+	            <a href="../../../index.html#/gongsi">公司介绍</a>
+	            <a href="../../../index.html#/news">新闻中心</a>
+	            <a href="http://company.zhaopin.com/CC295267788.htm" target="_blank">加入我们</a>
+	            <a href="../../../index.html#/lianxiWomen">联系我们</a>
+	        </nav>
+	    </nav>
+	    <nav class="rowStart head_user">
+	    	<a id="loginDe" class="LoginHover">登录</a>•
+	    	<a id="registerDe" class="LoginHover">注册</a>
+	    	<span class="fangyuan" id="fangyuan">免费发布房源</span>
+	    </nav>
+	</header>
+	<!-- 详情页滑动展示 -->
+	<div class="head_wrap detailsHeader">
+	    <div class="rowStart head_l">
+	        <a href="../../../index.html#/home"></a>
+	        <a href="../../../index.html#/home"></a>
+	    </div>
+	    <nav class="rowStart head_r">
+	        <a class="detailsHeaderASel" href="#div1">房屋综述</a>
+	        <a href="#div2">房屋位置</a>
+	        <a href="#div3">订房须知</a>
+	        <a href="#div4">房屋点评(18)</a>
+	    </nav>
+	    <nav class="head_user">
+	    	<div class="collection"></div>
+	    	<span>¥2987</span>
+	    	<a>立即预订</a>
+	    </nav>
+	</div>
+	<!-- 轮播 -->
+		<div class="pc-bannerWrap">
+			<div class="houseDetails">
+				<nav class="houseListTop"><a href="../../../index.html#/home">山海边</a> ＞ <a href="../../../index.html#/houseList" class="datailName"></a> ＞ <span class="roomTitle"></span></nav>
+			</div>
+		    <section class="houseMaxBan columnCenter">
+		        <div class="swiper-container">
+		            <div class="swiper-wrapper">
+		                <!-- <div class="swiper-slide swiper-slide-center none-effect"><a><img src="../../image/gongsi/fengcai3.png" id="0"></a></div>
+		                <div class="swiper-slide"><a><img src="../../image/gongsi/fengcai4.png" id="1"></a></div>
+		                <div class="swiper-slide"><a><img src="../../image/gongsi/fengcai5.png" id="2"></a></div>
+		                <div class="swiper-slide"><a><img src="../../image/gongsi/fengcai6.png" id="3"></a></div>
+		                <div class="swiper-slide"><a><img src="../../image/gongsi/fengcai7.png" id="4"></a></div>
+		                <div class="swiper-slide"><a><img src="../../image/gongsi/fengcai1.png" id="5"></a></div>
+		                <div class="swiper-slide"><a><img src="../../image/gongsi/fengcai2.png" id="6"></a></div> -->
+		            </div>
+		        </div>
+		        <div class="swiper-pagination"></div>
+		        <div class="button">
+		            <div class="swiper-button-prev"></div>
+		            <div class="swiper-button-next"></div>
+		        </div>
+		    </section>
+		</div>
+	
+		<div class="h_detailsWrap">
+	<!-- 基本信息 -->
+			<div class="h_details_infoWrap">
+				<div class="h_details_info">
+					<div class="h_info_tit">
+						<h3>北京行之家酒店公寓长安驿站套房北京行之家酒店公寓长安驿站套房</h3>
+						<div class="collection"></div>
+						<p>¥2989.87</p>
+					</div>
+					<div class="h_info_body">
+						<div class="h_info_l left">
+							<div>
+								<span>火车站北仓街往北200米路东翌琦新印象小区</span>
+								<a>查看地图</a>
+							</div>
+							<nav>
+								<img title="山海边在线担保，无需支付押金" src="../../image/houseList/colT1.png">
+								<img title="山海边摄像师上门实拍，百分百展示房源" src="../../image/houseList/colT2.png">
+								<img title="山海边实地考察，保证房源真实性" src="../../image/houseList/colT3.png">
+								<img title="入住房客全5分好评，品质好房" src="../../image/houseList/colT4.png">
+							</nav>
+							<ul>
+								<li><a><img src="../../image/houseList/h_info_img1.png">整套出租(94㎡)</a></li>
+								<li><a><img src="../../image/houseList/h_info_img2.png">3室1厅1卫1厨1阳</a></li>
+								<li><a title="1.5m(宽)*2.0米(长) 1张
+		1.8m(宽)*2.0米(长) 2张">
+									<img src="../../image/houseList/h_info_img3.png">3张床，宜住6人</a></li>
+							</ul>
+						</div>
+						<form class="h_info_r columnStart right">
+							<input class="fastSearch" type="text" placeholder="2018-09-23至2018-10-11" readonly="readonly" id="calanderFast">
+							<select>
+								<option value ="1">1套</option>
+								<option value ="2">2套</option>
+								<option value ="3">3套</option>
+							</select>
+							<button class="book">立即预订</button>
+						</form>
+					</div>
+				</div>
+			</div>
+	<!-- 房屋、房东、点评信息 -->
+			<div class="h_details">
+				<div class="h_details_l left">
+					<!-- 房屋综述 -->
+					<div class="details_l_com details_l_one" id="div1">
+						<nav class="details_l_tit">
+							<a href="#div1" class="details_l_tit_on">房屋综述</a>
+							<a href="#div2">房屋位置</a>
+							<a href="#div3">订房须知</a>
+							<a href="#div4">房屋点评(18)</a>
+						</nav>
+						<div class="zongshu_com peitao">
+							<div class="left zongshu_com_l">
+								<img src="../../image/houseList/peitao.png">
+								<h3>配套设施</h3>
+							</div>
+							<ul class="left">
+								<li><img src="../../image/houseList/peitao/26.png">无线wifi</li>
+								<li><img src="../../image/houseList/peitao/8.png">有线网络</li>
+								<li><img src="../../image/houseList/peitao/9.png">电视</li>
+								<li><img src="../../image/houseList/peitao/10.png">冰箱</li>
+								<li><img src="../../image/houseList/peitao/27.png">洗衣机</li>
+								<li><img src="../../image/houseList/peitao/20.png">空调</li>
+								<li><img src="../../image/houseList/peitao/7.png">暖气</li>
+								<li><img src="../../image/houseList/peitao/33.png">饮水设备</li>
+								<li><img src="../../image/houseList/peitao/6.png">吹风机</li>
+								<li><img src="../../image/houseList/peitao/5.png">拖鞋</li>
+								<li><img src="../../image/houseList/peitao/4.png">洗衣液</li>
+								<li><img src="../../image/houseList/peitao/3.png">智能门锁</li>
+								<li><img src="../../image/houseList/peitao/24.png">允许做饭</li>
+								<li><img src="../../image/houseList/peitao/23.png">全天热水</li>
+								<li><img src="../../image/houseList/peitao/22.png">浴缸</li>
+								<li><img src="../../image/houseList/peitao/21.png">沐浴露/洗发水</li>
+								<li><img src="../../image/houseList/peitao/37.png">香皂/洗手洗</li>
+								<li><img src="../../image/houseList/peitao/36.png">手纸</li>
+								<li><img src="../../image/houseList/peitao/35.png">牙具</li>
+								<li><img src="../../image/houseList/peitao/34.png">浴巾</li>
+								<li><img src="../../image/houseList/peitao/30.png">毛巾</li>
+								<li><img src="../../image/houseList/peitao/32.png">家庭影院</li>
+								<li><img src="../../image/houseList/peitao/31.png">投影设备</li>
+								<li><img src="../../image/houseList/peitao/29.png">游戏机</li>
+								<li><img src="../../image/houseList/peitao/28.png">麻将机</li>
+								<li><img src="../../image/houseList/peitao/19.png">桌面足球</li>
+								<li><img src="../../image/houseList/peitao/14.png">台球</li>
+								<li><img src="../../image/houseList/peitao/12.png">私家花园</li>
+								<li><img src="../../image/houseList/peitao/13.png">私家泳池</li>
+								<li><img src="../../image/houseList/peitao/11.png">私家温泉</li>
+								<li><img src="../../image/houseList/peitao/17.png">超市</li>
+								<li><img src="../../image/houseList/peitao/16.png">商场</li>
+								<li><img src="../../image/houseList/peitao/15.png">餐厅</li>
+								<li><img src="../../image/houseList/peitao/2.png">银行</li>
+								<li><img src="../../image/houseList/peitao/1.png">医院</li>
+								<li><img src="../../image/houseList/peitao/25.png">停车场</li>
+								<li class="zongshu_com_more"><span>收起</span></li>
+							</ul>
+						</div>
+						<div class="zongshu_com gexing">
+							<div class="left zongshu_com_l">
+								<img src="../../image/houseList/gexing.png">
+								<h3>个性描述</h3>
+							</div>
+							<div class="left pWrap">
+								<p>山海边度假公寓位于山东省烟台市龙口东海旅游度假区金域蓝湾B区，公寓三面环海，东侧即为龙口市较具规模的海鲜市场—岗峦码头，观海效果佳。拥有住宿即送高尔夫滨海华庭景观观赏，高尔，入住一星期以上即送南山大佛游的一系列尊贵服务系列尊贵服务系列尊贵服务啊啊啊啊啊</p>
+								<span>查看全部</span>
+							</div>
+						</div>
+						<div class="zongshu_com tese">
+							<div class="left zongshu_com_l">
+								<img src="../../image/houseList/tese.png">
+								<h3>特色描述</h3>
+							</div> 
+							<div class="left pWrap">
+								<p>公寓三面环海，118间客房格局均为两室一厅，装修风格温馨舒适，房间均配备冰箱、电视、空调、厨房、WIFI、热水器等设备设施，房型为标准间和大床房两种，每种房型均可入住4-6人不等。酒店式管理服务，拎包即住。务，拎包即住。务，。务，拎包即住。务，拎包即住公寓三面环海，118间客房格局均为两室一厅，装修风格温馨舒适，房间均配备冰箱、电视、空调、厨房、WIFI、热水器等设备设施，房型为标准间和大床房两种，每种房型均可入住4-6人不等。酒店式管理服务，拎包即住。务，拎包即住。务，。务，拎包即住。务，拎包即住............</p>
+								<span>收起</span>
+							</div>
+						</div>
+					</div>
+					<!-- 房屋位置 -->
+					<div class="details_l_com details_l_two" id="div2">
+						<h4><i></i>房屋位置</h4>
+						<div id="allmap"></div>
+						<div class="mapTypeWrap">
+							<nav class="mapType">
+								<a>交通</a>
+								<a>景点</a>
+								<a>餐饮</a>
+								<a class="mapTypeOn">生活</a>
+							</nav>
+							<ul>
+								<li>
+									<span>地铁北工大西门</span>
+									<p>距离980M</p>
+								</li>
+								<li>
+									<span>地铁北工大西门</span>
+									<p>距离980M</p>
+								</li>
+								<li>
+									<span>地铁北工大西门地铁北工大西门地铁北工大西门地铁北工大西门地铁北工大</span>
+									<p>距离980M</p>
+								</li>
+								<li>
+									<span>地铁北工大西门</span>
+									<p>距离980M</p>
+								</li>
+								<li>
+									<span>地铁北工大西门</span>
+									<p>距离980M</p>
+								</li>
+								<li>
+									<span>地铁北工大西门</span>
+									<p>距离980M</p>
+								</li>
+								<li>
+									<span>地铁北工大西门</span>
+									<p>距离980M</p>
+								</li>
+								<li>
+									<span>地铁北工大西门</span>
+									<p>距离980M</p>
+								</li>
+								<li>
+									<span>地铁北工大西门</span>
+									<p>距离980M</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- 订房须知 -->
+					<div class="details_l_com details_l_thr" id="div3">
+						<h4><i></i>订房须知</h4>
+						<div class="zongshu_com ruzhu">
+							<div class="left zongshu_com_l">
+								<img src="../../image/houseList/ruzhu.png">
+								<h3>入住须知</h3>
+							</div>
+							<ul class="left">
+								<li>接待时间：12:00——24:00</li>
+								<li>入住时间：入住当日12:00以后</li>
+								<li>退房时间：退房当日12:00以前</li>
+								<li>最少入住天数：1天</li>
+								<li>房屋：一客一扫</li>
+								<li>床单：一客一换</li>
+								<li>
+									<span>房主提供：</span>
+									<img src="../../image/houseList/fangzhu/1.png">
+									<span>行李寄存</span>
+									<img src="../../image/houseList/fangzhu/1.png"> 
+									<span>车站/机场接送</span>
+									<img src="../../image/houseList/fangzhu/10.png"> 
+									<span>早餐服务</span>
+									<img src="../../image/houseList/fangzhu/11.png">
+									<span>叫醒服务</span>
+								</li>
+							</ul>
+						</div>
+						<div class="zongshu_com jiedai">
+							<div class="left zongshu_com_l">
+								<img src="../../image/houseList/jiedai.png">
+								<h3>接待规则</h3>
+							</div>
+							<ul class="left">
+								<li><img src="../../image/houseList/fangzhu/not.png">不接待儿童(0~12周岁)</li>
+								<li><img src="../../image/houseList/fangzhu/not.png">不接待男性</li>
+								<li><img src="../../image/houseList/fangzhu/not.png">不接待外宾</li>
+								<li><img src="../../image/houseList/fangzhu/not.png">不允许做饭</li>
+							</ul>
+						</div>
+						<div class="zongshu_com qita">
+							<div class="left zongshu_com_l">
+								<img src="../../image/houseList/qita.png">
+								<h3>其他说明</h3>
+							</div>
+							<ul class="left">
+								<li>是否允许加床：是</li>
+								<li>加床收费说明：这里是后台维护的加床收费说明内容，如果后台该字段无维护内容，则不显示该字段名称；</li>
+								<li>额外费用：这里是后台维护的额外收费填写内容，如果后台该字段无维护内容，则不显示该字段名称；</li>
+								<li>其他提示：这里是后台维护的其他提示填写内容，如果后台该字段无维护内容，则不显示该字段名称；</li>
+							</ul>
+						</div>
+						<div class="zongshu_com tuiding">
+							<div class="left zongshu_com_l">
+								<img src="../../image/houseList/tuiding.png">
+								<h3>退订协议</h3>
+							</div>
+							<ul class="left">
+								<li>入住前X天 12:00前，可申请退款，之后不可申请退款</li>
+							</ul>
+						</div>
+					</div>
+					<!-- 房屋点评 -->
+					<div class="details_l_com details_l_fou" id="div4" style="display: block;">
+						<h4><i></i>房屋点评</h4>
+						<ul>
+							<li>
+								<div class="left details_l_fou_l">
+									<img src="../../image/home/logo_green.png">
+								</div>
+								<nav class="left">
+									<h5>昵称昵称昵称啊</h5>
+									<div class="dianpingStar">
+										<span></span><span></span><span></span><span></span><span></span>
+									</div>
+									<p>进房间，特别干净，窗户占了整面墙，视野超好，坐了一天的火车心情顿时美起来。晚饭过后，下楼几分钟溜达到洹园，晚风好凉。回来坐房间里，高层的夜景很美。</p>
+									<div class="dianpingImg">
+										<img src="../../image/home/haerbin.png">
+										<img src="../../image/home/haerbin.png">
+										<img src="../../image/home/haerbin.png">
+										<img src="../../image/home/haerbin.png">
+									</div>
+									<span class="dianpingTime">2018-07-12  22:58:09</span>
+								</nav>
+							</li>
+							<li>
+								<div class="left details_l_fou_l">
+									<img src="../../image/home/logo_green.png">
+								</div>
+								<nav class="left">
+									<h5>昵称昵称昵称啊</h5>
+									<div class="dianpingStar">
+										<span></span><span></span><span></span><span></span><span></span>
+									</div>
+									<p>进房间，特别干净，窗户占了整面墙，视野超好，坐了一天的火车心情顿时美起来。晚饭过后，下楼几分钟溜达到洹园，晚风好凉。回来坐房间里，高层的夜景很美。</p>
+									<div class="dianpingImg">
+										<img src="../../image/home/haerbin.png">
+										<img src="../../image/home/haerbin.png">
+										<img src="../../image/home/haerbin.png">
+										<img src="../../image/home/haerbin.png">
+									</div>
+									<span class="dianpingTime">2018-07-12  22:58:09</span>
+								</nav>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="h_details_r right">
+				<!-- 房东信息 -->
+					<div class="details_l_com landrordInfo">
+						<h4><i></i>房东信息</h4>
+						<a class="shanghu">商户经营</a>
+						<img src="../../image/home/haerbin.png">
+						<h5>北京行之家酒店公寓</h5>
+						<p>这里是房东介绍，这里是这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍，这里是房东介绍。</p>
+						<a class="landMore">查看房东更多信息>></a>
+					</div>
+				<!-- 推荐房源 -->
+					<div class="details_l_com tuijianMore">
+						<h4><i></i>推荐房源</h4>
+						<nav>
+							<a>
+								<div class="tuijianMoreImg">
+									<img src="../../image/home/haerbin.png">
+									<p>¥298</p>
+								</div>
+								<h5>北京行之家酒店公寓长安驿站套房</h5>
+								<p>整套出租／3室1厅1卫1厨1阳／3床／宜住6人</p>
+								<span>距离980M</span>
+							</a>
+							<a>
+								<div class="tuijianMoreImg">
+									<img src="../../image/home/haerbin.png">
+									<p>¥298</p>
+								</div>
+								<h5>北京行之家酒店公寓长安驿站套房</h5>
+								<p>整套出租／3室1厅1卫1厨1阳／3床／宜住6人</p>
+								<span>距离980M</span>
+							</a>
+							<a>
+								<div class="tuijianMoreImg">
+									<img src="../../image/home/haerbin.png">
+									<p>¥298</p>
+								</div>
+								<h5>北京行之家酒店公寓长安驿站套房</h5>
+								<p>整套出租／3室1厅1卫1厨1阳／3床／宜住6人</p>
+								<span>距离980M</span>
+							</a>
+							<a>
+								<div class="tuijianMoreImg">
+									<img src="../../image/home/haerbin.png">
+									<p>¥298</p>
+								</div>
+								<h5>北京行之家酒店公寓长安驿站套房</h5>
+								<p>整套出租／3室1厅1卫1厨1阳／3床／宜住6人</p>
+								<span>距离980M</span>
+							</a>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- 悬浮框 - 共同部分 -->
+	<div class="subNav">
+	    <div class="sub_l">
+	    	<div class="sub_l_img sub_l_com">
+		    	<a class="quitWrap">
+					<img src="../../image/quit.png" class="quit subQuit" data-num="0">
+				</a>
+	    		<div>
+	    			<img src="../../image/home/foot_1_1.png">
+	                <p>扫码下载山海边APP</p>
+	    		</div>
+	    		<div>
+	    			<img src="../../image/home/foot_1_2.png">
+	                <p>扫码关注山海边订阅号</p>
+	    		</div>
+	    	</div>
+	    	<div class="sub_l_tel sub_l_com">
+		    	<a class="quitWrap">
+					<img src="../../image/quit.png" class="quit subQuit" data-num="1">
+				</a>
+	    		<div>
+	    			<p>房客服务热线</p>
+	    			<span>400-150-0599</span>
+	    		</div>
+	    		<i></i>
+	    		<div>
+	    			<p>业务服务热线</p>
+	    			<span>010-56138614 刘先生</span>
+	    		</div>
+	    		<i></i>
+	    		<div>
+	    			<p>业务合作微信</p>
+	    			<span>shanhaibian2017</span>
+	    		</div>
+	    		<i></i>
+	    		<div>
+	    			<p>简历投递邮箱</p>
+	    			<span>hr@shanhaibian.com</span>
+	    		</div>
+	    	</div>
+	    	<div class="sub_l_yijian sub_l_com">
+	    		<a class="quitWrap">
+					<img src="../../image/quit.png" class="quit subQuit" data-num="3">
+				</a>
+	    		<h3>意见反馈</h3>
+	    		<textarea placeholder="您对山海边有任何意见，或者在山海边的APP、官网、订阅号等平台使用过程中遇到问题，请在本页反馈。" id="yijianTxt" maxlength="300"></textarea>
+	    		<textarea placeholder="留下您的手机号/固定电话/QQ/微信/邮箱等任意一种联系方式，方便我们及时给您回复。" id="yijianTel"></textarea>
+	    		<p id="yijianTip">联系方式不能为空</p>
+	    		<button id="yijianSubmit">提交反馈</button>
+	    	</div>
+	    	<div class="sub_l_fankui sub_l_com">
+	    		<a class="quitWrap">
+					<img src="../../image/quit.png" class="quit subQuit">
+				</a>
+	    		<img src="../../image/home/sub_l_fankui.png" class="sub_l_fankui_img">
+	    		<h3>反馈已提交</h3>
+	    		<p>山海边重视您的每一个问题，您的反馈就是我们进步的动力</p>
+				<p>请耐心等待，工作人员将尽快与您联系。</p>
+				<button id="fankuiBtn">我知道了</button>
+	    	</div>
+	    </div>
+	    <ul class="sub_r">
+	        <li><img src="../../image/home/com_erweima.png"></li>
+	        <li><img src="../../image/home/com_tel.png"></li>
+	        <li><a href="https://weibo.com/lvshb?refer_flag=1001030101_&is_all=1" target="_blank"><img src="../../image/home/com_weibo.png"></a></li>
+	        <li><img src="../../image/home/com_yijian.png"></li>
+	    </ul>
+	</div>
+	<!-- 网站脚部 - 共同部分 -->
+	<footer class="footer">
+	    <div class="rowBetween">
+	        <div class="rowStart">
+	            <div class="foot_1 rowCenter">
+	                <dl>
+	                    <dt>
+	                        <img src="../../image/home/foot_1_1.png">
+	                    </dt>
+	                    <dd>扫码下载APP</dd>
+	                </dl>
+	                <dl>
+	                    <dt>
+	                        <img src="../../image/home/foot_1_2.png">
+	                    </dt>
+	                    <dd>扫码关注订阅号</dd>
+	                </dl>
+	            </div>
+	            <ul class="foot_2">
+	                <li>电话：<a>400-150-0599</a></li>
+	                <li>邮箱：<a>severs@shanhaibian.com</a></li>
+	                <li>地址：<a>北京市丰台区南三环万兴大厦B座5层</a></li>
+	            </ul>
+	        </div>
+	        <div class="rowStart">
+	            <ul class="foot_3">
+	                 <li><a href="https://weibo.com/lvshb?refer_flag=1001030101_&is_all=1" target="_blank">关注新浪微博</a></li>
+	                <li><a href="https://itunes.apple.com/cn/app/ji-xun-xin-wen/id1268508944?mt=8" target="_blank">下载苹果版APP</a></li>
+	                <li><a href="http://shanhaibian.com/shb_mobile_backend_web/shb_v1.apk">下载安卓版APP</a></li>
+	            </ul>
+	            <ul class="foot_4">
+	                <li><a href="../../../index.html#/home">首页</a></li>
+	                <li><a href="../../../index.html#/gongsi">公司简介</a></li>
+	                <li><a href="../../../index.html#/product">产品介绍</a></li>
+	                <li><a href="../../../index.html#/news">新闻中心</a></li>
+	                <li><a href="../../../index.html#/ziying">自营品牌</a></li>
+	                <li><a href="http://company.zhaopin.com/CC295267788.htm" target="_blank">加入我们</a></li>
+	                <li><a class="fangyuan">发布房源</a></li>
+	                <li><a href="../../../index.html#/lianxiWomen">联系我们</a></li>
+	            </ul>
+	        </div>
+	    </div>
+	    <div class="copyRight">
+	        <p>山海边(北京)电子商务股份有限公司 京ICP备15045556号-1</p>
+	    </div>
+	</footer>
+	
+	<script type="text/javascript" src="../../lib/js/swiper-3.4.2.jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.pagination.min.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=PkYXeG59mEbkflB0ZtyFMSkauTgCIwZh&s=1"></script><!-- 百度地图密钥 -->
+    <!-- <script type="text/javascript" src="../../js/myview.js"></script> -->
+	<script type="text/javascript" src="../../js/main.js"></script>
+	<script type="text/javascript" src="../../js/houseList/houseDetails.js"></script>
+</body>

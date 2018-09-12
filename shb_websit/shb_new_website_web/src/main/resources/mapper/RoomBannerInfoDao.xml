@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.room.RoomBannerInfoDao">
+	<resultMap id="BaseResultMap" type="com.shb.web.mobile.room.RoomBannerInfo">
+		<id column="scf_id" property="scfId" jdbcType="BIGINT" />
+		<result column="sort" property="sort" jdbcType="BIGINT" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="picture_src" property="pictureSrc" jdbcType="VARCHAR" />
+		<result column="jump_type" property="jumpType" jdbcType="TINYINT" />
+		<result column="jump_address" property="jumpAddress" jdbcType="VARCHAR" />
+		<result column="exhibition_sate" property="exhibitionSate"
+			jdbcType="TINYINT" />
+		<result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+		<result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+		<result column="operator" property="operator" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="sri_rid" property="sriRid" jdbcType="BIGINT" />
+		<result column="room_id" property="roomId" jdbcType="BIGINT" />
+		<result column="sc_rid" property="scRid" jdbcType="BIGINT" />
+		<result column="ssui_rid" property="ssuiRid" jdbcType="BIGINT" />
+		<result column="room_type" property="roomType" jdbcType="TINYINT" />
+	</resultMap>
+	<!-- 查询banner -->
+
+	<select id="queryRoomBannerInfo" parameterType="RoomBannerInfo"
+		resultType="com.shb.web.dto.room.RoomBannerInfoDto">
+		SELECT
+		a.picture_src AS pictureSrc,
+		a.jump_address AS
+		jumpAddress,
+		a.jump_type AS jumpType,
+		a.room_type AS roomType,
+		a.title as title,
+		a.h5_url AS h5url
+		FROM
+		shb_carousel_figure a
+		WHERE
+		a.exhibition_sate = 1
+		AND DATE_FORMAT(NOW(),
+		'%Y-%m-%d') BETWEEN DATE_FORMAT(a.start_time,
+		'%Y-%m-%d')
+		AND
+		DATE_FORMAT(a.end_time, '%Y-%m-%d')
+		ORDER BY a.sort DESC
+	</select>
+	<select id="querCityCode" parameterType="String" resultType="City">
+	SELECT DISTINCT a.area_code from shb_city a where  a.city_name LIKE
+	CONCAT(CONCAT('%', #{cityName}),'%') GROUP BY  a.city_name
+	</select>
+</mapper>

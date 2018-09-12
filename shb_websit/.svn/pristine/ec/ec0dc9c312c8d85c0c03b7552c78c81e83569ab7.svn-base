@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.user.UserLogMapper" >
+  <resultMap id="BaseResultMap" type="com.shb.web.mobile.user.BaseUserLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="user_id" jdbcType="BIGINT" />
+    <result column="device_no" property="device_no" jdbcType="VARCHAR" />
+    <result column="platform" property="platform" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, device_no, platform, action, create_time
+  </sql>
+  <select id="selectByUserId" resultType="BaseUserLog" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from shb_user_log
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </select>
+</mapper>

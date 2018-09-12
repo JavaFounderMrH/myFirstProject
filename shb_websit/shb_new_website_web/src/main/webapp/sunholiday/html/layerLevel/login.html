@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../css/layerLevel.css">
+</head>
+<body>
+	<a class="quitWrap">
+		<img src="../../image/quit.png" class="quit" id="lofinQuit">
+	</a>
+	<!-- 登录 -->
+	<div class="loginWrap">
+		<div class="login_l columnStart">
+			<nav class="loginTab">
+				<a>普通登录</a>
+				<a>验证码快捷登录</a>
+				<i></i>
+			</nav>
+			<!-- 普通登录 -->
+			<div class="login_l_putong">
+				<p class="loginPrompt loginPrompt1">手机号或验证码错误</p>
+				<div class="login_l_inputWrap login_user1">
+					<span></span>
+					<input type="text" placeholder="请输入11位手机号" id="login_user1" maxlength="11">
+				</div>
+				<div class="login_l_inputWrap login_password">
+					<span></span>
+					<input type="password" placeholder="请输入密码" id="login_password" maxlength="16">
+					<a class="seePassword"></a>
+				</div>
+				<div class="login_l_doth">
+					<div>
+						<input type="checkbox" checked="checked" id="rememberUser"/><label for="rememberUser">保存登录时长一月</label>
+					</div>
+					<a id="forgerPage">忘记密码？</a>
+				</div>
+				<button class="submit" id="submitP">登录</button>
+			</div>
+			<!-- 验证码快捷登录 -->
+			<div class="login_l_kuaijie">
+				<p class="loginPrompt loginPrompt2">手机号或验证码错误</p>
+				<div class="login_l_inputWrap login_user2">
+					<span></span>
+					<input type="text" placeholder="请输入11位手机号" id="login_user2" maxlength="11">
+				</div>
+				<div class="login_l_inputWrapYz login_l_inputWrapYzImg">
+					<div class="login_l_inputYz login_l_inputYzImg">
+						<span></span>
+						<input type="text" placeholder="请输入图片验证码" maxlength="4" id="yzmImg">
+					</div>
+					<a>
+						<img id="codeImg"/>
+						<span id="codeImgTab">看不清，换一张</span>
+					</a>
+				</div>
+				<div class="login_l_inputWrapYz login_l_inputWrapYzDt">
+					<div class="login_l_inputYz login_l_inputYzDt">
+						<span></span>
+						<input type="text" placeholder="请输入动态验证码" maxlength="4" id="yzmDt">
+					</div>
+					<button id="hqYzm">获取动态验证码</button>
+				</div>
+				<button class="submit" id="submitY">登录</button>
+				<p class="login_l_tipsYz">通过验证码登录成功，未注册将自动创建山海边账号</p>
+			</div>
+		</div>
+		<div class="login_r columnStart">
+			<p class="login_r_slogn">下载手机APP，随时随地订房</p>
+			<img src="../../image/layerLevel/appEr.png">
+			<a class="android" href="http://shanhaibian.com/shb_mobile_backend_web/shb_v1.apk">Android版下载</a>
+			<a class="iphone" href="https://itunes.apple.com/cn/app/ji-xun-xin-wen/id1268508944?mt=8" target="_blank">iphone版下载</a>
+			<p class="login_r_register">还不是山海边会员？<button id="registerLogin">立即注册＞＞</button></p>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../../lib/layui/layui.all.js"></script>
+	<script type="text/javascript" src="../../lib/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="../../js/main.js"></script>
+	<script type="text/javascript" src="../../js/layerLevel/loginCommon.js"></script>
+	<script type="text/javascript" src="../../js/layerLevel/login.js"></script>
+</body>
+</html>

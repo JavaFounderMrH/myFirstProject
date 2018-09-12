@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <!--title小图标-->
+    <link rel="icon" href="../img/homeIco.ico" type="image/x-icon"/>
+    <title>产品介绍</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/twoleval.css">
+    <link rel="stylesheet" type="text/css" href="../lib/swiper-3.4.2.min.css">
+</head>
+<body>
+<!-- common header -->
+<header class="header rowBetween">
+    <a href="../../appIndex.html#hover" class="logo"></a>
+    <div class="swiper-container" id="nav">
+        <div class="swiper-wrapper rowBetween">
+            <div class="swiper-slide"><a href="../../appIndex.html#hover">首页</a></div>
+            <div class="swiper-slide"><a href="../html/product.html#hover" id="hover">产品介绍</a></div>
+            <div class="swiper-slide"><a href="../html/ziying.html#hover">自营品牌</a></div>
+            <div class="swiper-slide"><a href="../html/jianjie.html#hover">公司简介</a></div>
+            <div class="swiper-slide"><a href="../html/news.html#hover">新闻中心</a></div>
+            <div class="swiper-slide"><a href="../html/lianxi.html#hover">联系我们</a></div>
+        </div>
+    </div>
+</header>
+<!-- banner -->
+<div class="productBanner">
+    <a id="xiazai">立即下载</a>
+</div>
+<!-- 特色活动、优选自营、城市覆盖 -->
+<ul class="productList1 rowBetween">
+    <li>
+        <h2></h2>
+        <h3>特色活动</h3>
+        <p>特色主题活动</p>
+        <p>系列主题房源</p>
+    </li>
+    <li>
+        <h2></h2>
+        <h3>优选自营</h3>
+        <p>优质自营房源</p>
+        <p>为你精选好房</p>
+    </li>
+    <li>
+        <h2></h2>
+        <h3>城市覆盖</h3>
+        <p>多城市覆盖</p>
+        <p>走到哪里不怕没房</p>
+    </li>
+</ul>
+<!-- 用户画像 -->
+<div class="huaxiang"></div>
+<!-- 产品图像 -->
+<ul class="productList2">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<!-- common footer-->
+<footer class="footer">
+    <ul class="footNav rowCenter">
+        <li><a href="../../appIndex.html#hover">首页</a></li>
+        <li><a href="../html/product.html#hover">产品介绍</a></li>
+        <li><a href="../html/ziying.html#hover">自营品牌</a></li>
+        <li><a href="../html/jianjie.html#hover">公司简介</a></li>
+        <li><a href="../html/news.html#hover">新闻中心</a></li>
+        <li><a href="../html/lianxi.html#hover">联系我们</a></li>
+    </ul>
+    <ul class="footImg rowCenter">
+        <li>
+            <img src="../img/home/footImg1.png">
+            <span>长按下载APP</span>
+        </li>
+        <li>
+            <img src="../img/home/footImg2.png">
+            <span>长按关注订阅号</span>
+        </li>
+    </ul>
+    <p class="copy">山海边(北京)电子商务股份有限公司 京ICP备15045556号-1</p>
+</footer>
+
+<script type="text/javascript" src="../lib/rem.js"></script>
+<script type="text/javascript" src="../lib/jquery.min.js"></script>
+<script type="text/javascript" src="../lib/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/twoleval.js"></script>
+<script type="text/javascript">
+	$('#xiazai').on('click',function(){
+	    var u = navigator.userAgent;
+	    var app = navigator.appVersion;
+	    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //安卓
+	    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+	    if (isAndroid) {
+	        //这个是安卓操作系统
+	        $('#xiazai').attr({'href':'http://shanhaibian.com/shb_mobile_backend_web/shb_v1.apk','target':'_blank'});
+	    }
+	    if (isIOS) {
+	        //这个是ios操作系统
+	        $('#xiazai').attr({'href':'https://itunes.apple.com/cn/app/ji-xun-xin-wen/id1268508944?mt=8','target':'_blank'});
+	    }
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<script type="text/javascript" th:src="@{http://192.168.3.128:9099/shb_new_website_web/app/lib/jquery.min.js}"></script>
+
+</head>
+<body>
+<h1>这里是测试</h1>
+<a th:href="@{http://192.168.3.128:9099/shb_new_website_web/#/home}"><span>点这里回首页</span></a>
+<input type="text" th:value="${flag}"/>
+<!-- <tr th:each="prod : ${prods}">
+      <td th:text="${prod.name}">Onions</td>
+      <td th:text="${prod.price}">2.41</td>
+      <td th:text="${prod.inStock}? #{true} : #{false}">yes</td>
+    </tr> -->
+
+
+</body>
+</html>

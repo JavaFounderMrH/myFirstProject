@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.order.OrderRefundDao">
+	<resultMap id="BaseResultMap" type="com.shb.web.mobile.order.OrderRefund">
+		<id column="sr_id" property="srId" jdbcType="BIGINT" />
+		<result column="refund_time" property="refundTime" jdbcType="TIMESTAMP" />
+		<result column="order_number" property="orderNumber" jdbcType="BIGINT" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="pay_type" property="payType" jdbcType="TINYINT" />
+		<result column="pay_account" property="payAccount" jdbcType="VARCHAR" />
+		<result column="refund_price" property="refundPrice" jdbcType="DOUBLE" />
+		<result column="refund_state" property="refundState" jdbcType="TINYINT" />
+		<result column="refund_confirm_time" property="refundConfirmTime"
+			jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+		<result column="operator" property="operator" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="paid_price" property="paidPrice" jdbcType="DOUBLE" />
+		<result column="check_price" property="checkPrice" jdbcType="DOUBLE" />
+		<result column="liquidated_damages" property="liquidatedDamages"
+			jdbcType="DOUBLE" />
+		<result column="refund_reason" property="refundReason"
+			jdbcType="TINYINT" />
+		<result column="refund_description" property="refundDescription"
+			jdbcType="VARCHAR" />
+		<result column="sui_rid" property="suiRid" jdbcType="BIGINT" />
+		<result column="ssui_rid" property="ssuiRid" jdbcType="BIGINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		sr_id, refund_time, order_number, user_name, pay_type,
+		pay_account,
+		refund_price,
+		refund_state, refund_confirm_time, is_delete,
+		operator, create_time, modify_time,
+		paid_price, check_price,
+		liquidated_damages, refund_reason,
+		refund_description, sui_rid,
+		ssui_rid
+	</sql>
+	<select id="selectByPrimaryKey" resultType="OrderRefund"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from shb_refund
+		where sr_id = #{srId,jdbcType=BIGINT}
+	</select>
+	<update id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		update shb_refund
+		set is_delete = 0
+		where sr_id = #{srId,jdbcType=BIGINT}
+	</update>
+	<insert id="insertSelective" parameterType="OrderRefund"
+		keyProperty="srId">
+		insert into shb_refund
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="srId != null">
+				sr_id,
+			</if>
+			<if test="refundTime != null">
+				refund_time,
+			</if>
+			<if test="orderNumber != null">
+				order_number,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="payType != null">
+				pay_type,
+			</if>
+			<if test="payAccount != null">
+				pay_account,
+			</if>
+			<if test="refundPrice != null">
+				refund_price,
+			</if>
+			<if test="refundState != null">
+				refund_state,
+			</if>
+			<if test="refundConfirmTime != null">
+				refund_confirm_time,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="operator != null">
+				operator,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="paidPrice != null">
+				paid_price,
+			</if>
+			<if test="checkPrice != null">
+				check_price,
+			</if>
+			<if test="liquidatedDamages != null">
+				liquidated_damages,
+			</if>
+			<if test="refundReason != null">
+				refund_reason,
+			</if>
+			<if test="refundDescription != null">
+				refund_description,
+			</if>
+			<if test="suiRid != null">
+				sui_rid,
+			</if>
+			<if test="ssuiRid != null">
+				ssui_rid,
+			</if>
+			<if test="applyRefundInfo != null">
+				apply_refund_info,
+			</if>
+			<if test="otherReasons != null">
+				other_reasons,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="srId != null">
+				#{srId,jdbcType=BIGINT},
+			</if>
+			<if test="refundTime != null">
+				#{refundTime},
+			</if>
+			<if test="orderNumber != null">
+				#{orderNumber,jdbcType=BIGINT},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="payType != null">
+				#{payType,jdbcType=TINYINT},
+			</if>
+			<if test="payAccount != null">
+				#{payAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="refundPrice != null">
+				#{refundPrice,jdbcType=DOUBLE},
+			</if>
+			<if test="refundState != null">
+				#{refundState,jdbcType=TINYINT},
+			</if>
+			<if test="refundConfirmTime != null">
+				#{refundConfirmTime},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="operator != null">
+				#{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime},
+			</if>
+			<if test="paidPrice != null">
+				#{paidPrice,jdbcType=DOUBLE},
+			</if>
+			<if test="checkPrice != null">
+				#{checkPrice,jdbcType=DOUBLE},
+			</if>
+			<if test="liquidatedDamages != null">
+				#{liquidatedDamages,jdbcType=DOUBLE},
+			</if>
+			<if test="refundReason != null">
+				#{refundReason,jdbcType=TINYINT},
+			</if>
+			<if test="refundDescription != null">
+				#{refundDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="suiRid != null">
+				#{suiRid,jdbcType=BIGINT},
+			</if>
+			<if test="ssuiRid != null">
+				#{ssuiRid,jdbcType=BIGINT},
+			</if>
+			<if test="applyRefundInfo != null and applyRefundInfo!=''">
+				#{applyRefundInfo},
+			</if>
+			<if test="otherReasons != null and otherReasons!=''">
+				#{otherReasons},
+			</if>
+		</trim>
+		<selectKey resultType="java.lang.Long" order="AFTER"
+			keyProperty="srId">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="OrderRefund">
+		update shb_refund
+		<set>
+			<if test="refundTime != null">
+				refund_time = #{refundTime},
+			</if>
+			<if test="orderNumber != null">
+				order_number = #{orderNumber,jdbcType=BIGINT},
+			</if>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="payType != null">
+				pay_type = #{payType,jdbcType=TINYINT},
+			</if>
+			<if test="payAccount != null">
+				pay_account = #{payAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="refundPrice != null">
+				refund_price = #{refundPrice,jdbcType=DOUBLE},
+			</if>
+			<if test="refundState != null">
+				refund_state = #{refundState,jdbcType=TINYINT},
+			</if>
+			<if test="refundConfirmTime != null">
+				refund_confirm_time = #{refundConfirmTime},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="operator != null">
+				operator = #{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime},
+			</if>
+			<if test="paidPrice != null">
+				paid_price = #{paidPrice,jdbcType=DOUBLE},
+			</if>
+			<if test="checkPrice != null">
+				check_price = #{checkPrice,jdbcType=DOUBLE},
+			</if>
+			<if test="liquidatedDamages != null">
+				liquidated_damages =
+				#{liquidatedDamages,jdbcType=DOUBLE},
+			</if>
+			<if test="refundReason != null">
+				refund_reason = #{refundReason,jdbcType=TINYINT},
+			</if>
+			<if test="refundDescription != null">
+				refund_description =
+				#{refundDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="suiRid != null">
+				sui_rid = #{suiRid,jdbcType=BIGINT},
+			</if>
+			<if test="ssuiRid != null">
+				ssui_rid = #{ssuiRid,jdbcType=BIGINT},
+			</if>
+		</set>
+		where sr_id = #{srId,jdbcType=BIGINT}
+	</update>
+	<!--取消退款 -->
+
+	<update id="updateOrderRefund" parameterType="long">
+		update shb_refund
+		set refund_state = 4 where order_number = #{orderNumber}
+	</update>
+	<select id="queryOrderRefund" resultType="java.util.LinkedHashMap"
+		parameterType="OrderRefund">
+		SELECT
+		a.audit_not_refund_info AS refundInfo,
+		b.other_reasons AS
+		otherRefund,
+		b.refund_state AS refundState,
+		b.refund_reason AS
+		applyRefundInfo,
+		DATE_FORMAT(b.refund_time, '%Y-%m-%d %H:%i:%s') AS refundTime,
+		b.sr_id AS srId,
+		a.actual_price AS actualPrice,
+		a.soi_id AS soiId,
+		DATE_FORMAT(a.create_time, '%Y-%m-%d %H:%i:%s') AS createTime,
+		DATE_FORMAT(B.refund_confirm_time, '%Y-%m-%d %H:%i:%s') AS refundConfirmTime
+		FROM
+		shb_refund b
+		LEFT JOIN
+		shb_order_info a ON a.soi_id = b.order_number
+		WHERE
+		b.is_delete = 1 and
+		b.order_number = #{orderNumber}
+	</select>
+</mapper>

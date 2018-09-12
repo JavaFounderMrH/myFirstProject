@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <!--title小图标-->
+    <link rel="icon" href="../img/homeIco.ico" type="image/x-icon"/>
+    <title>联系我们</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/twoleval.css">
+    <link rel="stylesheet" type="text/css" href="../lib/swiper-3.4.2.min.css">
+</head>
+<body>
+<!-- common header -->
+<header class="header rowBetween">
+    <a href="../../appIndex.html#hover" class="logo"></a>
+    <div class="swiper-container" id="nav">
+        <div class="swiper-wrapper rowBetween">
+            <div class="swiper-slide"><a href="../../appIndex.html#hover">首页</a></div>
+            <div class="swiper-slide"><a href="../html/product.html#hover">产品介绍</a></div>
+            <div class="swiper-slide"><a href="../html/ziying.html#hover">自营品牌</a></div>
+            <div class="swiper-slide"><a href="../html/jianjie.html#hover">公司简介</a></div>
+            <div class="swiper-slide"><a href="../html/news.html#hover">新闻中心</a></div>
+            <div class="swiper-slide"><a href="../html/lianxi.html#hover" id="hover">联系我们</a></div>
+        </div>
+    </div>
+</header>
+<!-- banner -->
+<div class="lianxiBanner"></div>
+<!-- 公司地址交通 -->
+<ul class="lianxiAdress">
+    <li class="rowStart">
+        <h3>公司</h3>
+        <p>山海边（北京）电子商务股份有限公司</p>
+    </li>
+    <li class="rowStart">
+        <h3>地址</h3>
+        <p>北京市丰台区万兴大厦B座5层</p>
+    </li>
+    <li class="rowStart">
+        <h3>交通</h3>
+        <p>公交：49路;300路快车内环;300路快车外环;300路内环;300路外环;351路;483路;631路;631路快车;678路;692路;820路;839路;968路;973路;998路;海子角通勤快车;特8路内环;特8路外环;西红门西站
+            通勤快车;夜30内;夜30外;运通103线——玉泉营桥西下车<br>地铁：10号线纪家庙下车</p>
+    </li>
+</ul>
+<!-- 百度地图 -->
+<div id="baiduMap"></div>
+<!-- 联系方式 -->
+<div class="fangshi">
+    <p>联系方式</p>
+    <span>CONTACT INFORMATION</span>
+</div>
+<!-- 联系 -->
+<ul class="lianxi">
+    <li>客户服务热线 ：<a href="tel:400-150-0599">400-150-0599</a></li>
+    <li>业务服务热线 ：<a href="tel:010-59411159">010-59411159</a></li>
+    <li>业务合作微信 ：shanhaibian2017</li>
+    <li>简历投递邮箱 ：hr@shanhaibian.com</li>
+</ul>
+<!-- common footer-->
+<footer class="footer">
+    <ul class="footNav rowCenter">
+        <li><a href="../../appIndex.html#hover">首页</a></li>
+        <li><a href="../html/product.html#hover">产品介绍</a></li>
+        <li><a href="../html/ziying.html#hover">自营品牌</a></li>
+        <li><a href="../html/jianjie.html#hover">公司简介</a></li>
+        <li><a href="../html/news.html#hover">新闻中心</a></li>
+        <li><a href="../html/lianxi.html#hover">联系我们</a></li>
+    </ul>
+    <ul class="footImg rowCenter">
+        <li>
+            <img src="../img/home/footImg1.png">
+            <span>长按下载APP</span>
+        </li>
+        <li>
+            <img src="../img/home/footImg2.png">
+            <span>长按关注订阅号</span>
+        </li>
+    </ul>
+    <p class="copy">山海边(北京)电子商务股份有限公司 京ICP备15045556号-1</p>
+</footer>
+
+<script type="text/javascript" src="../lib/rem.js"></script>
+<script type="text/javascript" src="../lib/jquery.min.js"></script>
+<script type="text/javascript" src="../lib/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/twoleval.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=PkYXeG59mEbkflB0ZtyFMSkauTgCIwZh"></script><!-- 百度地图密钥 -->
+<script type="text/javascript">
+newurl();
+function newurl(){
+    myurl = location.href;
+    var times = myurl.split("?"); 
+    if(times[1] != 1){ 
+        myurl += "?1";
+        self.location.replace(myurl);
+        history.go(0);
+    }
+}
+    // 百度地图API功能
+    var map = new BMap.Map("baiduMap");
+    var point = new BMap.Point(116.335542,39.848744);
+    map.centerAndZoom(point, 18);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    var label = new BMap.Label("山海边（北京）电子商务股份有限公司",{offset:new BMap.Size(20,-10)});
+    marker.setLabel(label);
+    map.enableScrollWheelZoom(true);
+</script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+.houseListWrapWrap, .houseDetailsWrap{
+	width: 100%;
+	background: #F6F8FA;
+}
+.houseListWrap{
+	width: 1199px;
+	margin: 0 auto;
+}
+.houseListTop{
+	font-size: 16px;
+	color: #4A4A4A;
+	padding: 22px 0;
+}
+.houseListTop a{
+	font-size: 16px;
+	color: #4A4A4A;
+	cursor: pointer;
+}
+.houseListTop a:hover{
+	color: #40d8d7;
+}
+.fastWrap{
+	position: static;
+    z-index: 9999;
+    width: 1200px;
+    height: 80px;
+    background: #FFFFFF;
+	border-radius: 6px;
+	overflow: hidden;
+}
+/* 房源-日期 列表 */
+.houseFastSearchWrap{
+	position: relative;
+}
+.houseFastSearchWrap .cityWrap{
+	left: 0;
+    top: 108%;
+}
+.houseFastSearchWrap .geoPositionWrap{
+	left: 0;
+    top: 108%;
+}
+.houseFastSearchWrap .geoPositionNot{
+	left: 0;
+    top: 108%;
+}
+#layui-laydate1 {
+    top: 22.3%!important;
+    left: 29.55%!important;
+    width: 790px!important;
+    height: 380px!important;
+}
+
+.houseSearchWrap{
+	height: 174px;
+	box-shadow: 0 1px 4px -1px rgba(0,0,0,0.12);
+	background: #FFFFFF;
+	padding: 20px;
+	margin: 10px 0;
+}
+.weizhiWrap , .huxingWrap, .fangxingWrap, .peizhiWrap{
+	width: 100%;
+	margin-bottom: 4px;
+}
+.weizhiWrap span, .huxingWrap span, .fangxingWrap span, .peizhiWrap span{
+	float: left;
+    font-size: 14px;
+    line-height: 26px;
+}
+.weizhiWrap .weizhiList a{
+	font-size: 14px;
+    color: #4A4A4A;
+    cursor: pointer;
+    padding: 7px 40px 7px 24px;
+    position: relative;
+    border: 1px solid transparent;
+    z-index: 2;
+    background: #fff;
+}
+.weizhiWrap .weizhiList a:hover{
+	border: 1px solid #DCDCDC;
+	border-bottom: none;
+	box-shadow: 0 -1px 6px 0 rgba(0,0,0,0.07);
+	padding-bottom: 9px;
+}
+.weizhiWrap .weizhiList a img{
+	display: block;
+    width: 10px;
+    height: 7px;
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    transition: All 0.4s ease-in-out;
+	-webkit-transition: All 0.4s ease-in-out;
+	-moz-transition: All 0.4s ease-in-out;
+	-o-transition: All 0.4s ease-in-out;
+	-ms-transition: All 0.4s ease-in-out;
+}
+.weizhiWrap .weizhiList a:hover img{
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+}
+.huxingWrap div, .fangxingWrap div, .peizhiWrap div{
+	padding-left: 45px;
+}
+.huxingWrap div label, .fangxingWrap div label, .peizhiWrap div label{
+	margin: 0 19px;
+	float: left;
+	cursor: pointer;
+	margin-bottom: 10px;
+	background: #fff url(../image/houseList/input_bg.png) no-repeat 10px 5px;
+	color: #999;
+	padding-right: 10px;
+}
+.huxingWrap div label:hover, .fangxingWrap div label:hover, .peizhiWrap div label:hover{
+	color: #40d8d7;
+}
+.huxingWrap div label input, .fangxingWrap div label input, .peizhiWrap div label input{
+	opacity: 0;
+    float: left;
+    margin-top: 6px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.peizhiWrap div label{
+	margin-bottom: 0;
+}
+.peizhiWrap div label:hover{
+	color: #40d8d7;
+}
+.weizhi{
+	position: relative;
+	float: left;
+	margin-bottom: 10px;
+	padding-left: 22px;
+}
+/* 搜索条件列表 */
+.weizhiData{
+	position: absolute;
+	left: 22px;
+    top: 27px;
+	min-width: 100%;
+	background: #FFFFFF;
+	border: 1px solid #DCDCDC;
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.07);
+	z-index: 1;
+	display: none;
+}
+.weizhiData a{
+	float: left;
+	font-size: 14px;
+	width: 140px;
+	margin-right: 5%;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+.weizhiData a span{
+	padding: 5px 8px;
+	max-width: 140px;
+	color: #4A4A4A;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.weizhiData a span:hover{
+	color: #40d8d7;
+}
+.weizhiData .weizhiDataSel{
+	color: #FFFFFF;
+	background: #40D8D7;
+}
+.weizhiData .weizhiDataSel:hover{
+	color: #fff;
+}
+.weizhiData div{
+	padding: 20px;
+	padding-bottom: 0;
+	overflow: hidden;
+}
+.weizhiDataTwo{
+	border-top: 1px dashed #DCDCDC;
+	display: none;
+}
+
+.fangyuanliebiao{
+	display: block;
+    padding: 20px 0;
+}
+.sortWrap{
+	height: 46px;
+	line-height: 46px;
+	background: #FFFFFF;
+	box-shadow: 0 1px 4px -1px rgba(0,0,0,0.12);
+	margin-bottom: 15px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.sortWrap span:nth-child(1){
+	color: #40D8D7;
+	margin: 0 22px;
+}
+.sortWrap span:nth-child(2), .sortWrap span:nth-child(3){
+	color: #333333;
+	margin-right: 18px;
+	cursor: pointer;
+}
+.sortWrap span:nth-child(2){
+	background: url(../image/houseList/h_jiantou_down.png) no-repeat left 2px;
+	padding-left: 14px;
+}
+#houseList{
+	overflow: hidden;
+	padding-bottom: 40px;
+}
+#houseList li{
+	display: block;
+	float: left;
+	width: 580px;
+	height: 528.2px;
+	background: #FFFFFF;
+	cursor: pointer;
+	margin-bottom: 39px;
+}
+#houseList li:hover{
+	box-shadow: 0 1px 4px -1px rgba(0,0,0,0.12);
+}
+#houseList li:nth-child(odd){
+	margin-right: 39px;
+}
+.h_img{
+	width: 100%;
+	height: 348px;
+	position: relative;
+}
+.h_img a{
+	display: block;
+	width: 100%;
+	height: 348px;
+}
+.h_img a img{
+	width: 100%;
+	height: 348px;
+}
+.h_img p{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.48);
+	height: 39px;
+	line-height: 39px;
+	width: 100%;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-align: center;
+	display: none;
+	z-index: 999;
+}
+.h_info{
+	display: block;
+	height: 140px;
+	padding: 20px;
+	color: #4A4A4A;
+}
+.h_info_tit{
+	height: 36px;
+    line-height: 36px;
+}
+.h_info_tit span:nth-child(1){
+	font-size: 20px;
+    color: #333333;
+    float: left;
+    width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}
+.h_info_tit span:nth-child(2){
+	font-size: 36px;
+	color: #F74C4C;
+	float: right;
+}
+.h_info_type{
+	font-size: 18px;
+	color: #2A2A2A;
+	line-height: 28px;
+}
+.h_info_pos{
+	font-size: 16px;
+	color: #3F3F3F;
+	line-height: 22px;
+	margin: 10px 0;
+}
+.h_info_pos span:nth-child(1){
+	display: inline-block;
+	background: url(../image/houseList/h_position.png) no-repeat left center;
+	padding-left: 22px;
+    margin-right: 16px;
+}
+.h_info_peo{
+	height: 32px;
+	line-height: 32px;
+}
+.h_info_peo p{
+	float: left;
+}
+.h_info_peo p img{
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+}
+.h_info_peo p span{
+	font-size: 18px;
+	color: #4A4A4A;
+	margin-left: 5px;
+}
+.h_info_peo nav{
+	float: right;
+}
+.h_info_peo nav img{
+	float: left;
+    width: auto;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+.fangyuanNotWrap{
+	padding: 20px 0;
+	display: none;
+}
+.fangyuanNot{
+	background: #FFFFFF;
+	height: 230px;
+    padding-top: 39px;
+}
+.fangyuanNot p{
+	font-size: 22px;
+	color: #9B9B9B;
+	background: url(../image/houseList/fangyuanNot_p.png) no-repeat 28% center;
+	text-align: center;
+	line-height: 30px;
+}
+.fangyuanNot img{
+	width: 502px;
+	height: 188px;
+	margin-top: 12px;
+	margin-left: 28%;
+}
+

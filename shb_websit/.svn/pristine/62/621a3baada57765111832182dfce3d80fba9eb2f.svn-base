@@ -1,0 +1,496 @@
+/* product */
+.productBanner{
+    width: 100%;
+    height: 4.45rem;
+    background: url("../img/product/productBanner.png") no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: 0.435rem;
+}
+.productBanner a{
+    position: absolute;
+    left: 0.86rem;
+    top: 1.275rem;
+    width: 2.1rem;
+    height: 0.44rem;
+    line-height: 0.44rem;
+    font-size: 0.17rem;
+    color: #fff;
+    background: #29d7dc;
+    border-radius: 0.22rem;
+    text-align: center;
+}
+.productList1{
+    height: 1.24rem;
+    padding: 0.3rem;
+}
+.productList1 li{
+    text-align: center;
+}
+.productList1 li h2{
+    width: 0.35rem;
+    height: 0.35rem;
+    margin-bottom: 0.1rem;
+}
+.productList1 li:nth-child(1) h2{
+    background: url("../img/product/productList1_1.png") no-repeat;
+    background-size: cover;
+    margin-left: 0.15rem;
+}
+.productList1 li:nth-child(2) h2{
+    background: url("../img/product/productList1_2.png") no-repeat;
+    background-size: cover;
+    margin-left: 0.18rem;
+}
+.productList1 li:nth-child(3) h2{
+    background: url("../img/product/productList1_3.png") no-repeat;
+    background-size: cover;
+    margin-left: 0.3rem;
+}
+.productList1 li h3{
+    font-size: 0.16rem;
+    color: #413f35;
+    margin-bottom: 0.08rem;
+    font-family: '微软雅黑';
+}
+.productList1 li p{
+    font-size: 0.12rem;
+    color: #999;
+    margin-bottom: 0.05rem;
+    font-family: '微软雅黑';
+}
+.huaxiang{
+    height: 2.725rem;
+    background: url("../img/product/huaxiang.png") no-repeat;
+    background-size: cover;
+}
+.productList2 li:nth-child(1){
+    height: 5.305rem;
+    background: url("../img/product/productList2_1.png") no-repeat;
+    background-size: cover;
+}
+.productList2 li:nth-child(2){
+    height: 4.97rem;
+    background: url("../img/product/productList2_2.png") no-repeat;
+    background-size: cover;
+}
+.productList2 li:nth-child(3){
+    height: 5.27rem;
+    background: url("../img/product/productList2_3.png") no-repeat;
+    background-size: cover;
+}
+.productList2 li:nth-child(4){
+    height: 4.935rem;
+    background: url("../img/product/productList2_4.png") no-repeat;
+    background-size: cover;
+}
+.productList2 li:nth-child(5){
+    height: 4.705rem;
+    background: url("../img/product/productList2_5.png") no-repeat;
+    background-size: cover;
+}
+/* ziying */
+#ziyingBanner{
+    width: 100%;
+    margin-top: 0.435rem;
+}
+#ziyingBanner .swiper-slide{
+    width: 100%;
+    height: 2rem;
+}
+.ziyingBanner1{
+    background: url("../img/ziying/ziyingBanner1.png") no-repeat;
+    background-size: cover;
+}
+.ziyingBanner2{
+    background: url("../img/ziying/ziyingBanner2.png") no-repeat;
+    background-size: cover;
+}
+.ziyingBanner3{
+    background: url("../img/ziying/ziyingBanner3.png") no-repeat;
+    background-size: cover;
+}
+.ziyingBanner4{
+    background: url("../img/ziying/ziyingBanner4.png") no-repeat;
+    background-size: cover;
+}
+.ziyingBanner5{
+    background: url("../img/ziying/ziyingBanner5.png") no-repeat;
+    background-size: cover;
+}
+.ziyingBanner6{
+    background: url("../img/ziying/ziyingBanner6.png") no-repeat;
+    background-size: cover;
+}
+#ziyingBanner .swiper-pagination-bullet {
+    width: 0.05rem;
+    height: 0.05rem;
+    opacity: 1;
+    margin: 0 0.045rem;
+    background: rgba(255,255,255,0.8);
+}
+#ziyingBanner .swiper-pagination-bullet-active {
+    width: 0.18rem;
+    opacity: 1;
+    background: rgba(255,255,255,1);
+    border-radius: 20px;
+}
+.ziyingMinList{
+    width: 100%;
+    margin-top: 0.28rem;
+    overflow: hidden;
+}
+.ziyingMinList li a{
+    float: left;
+    margin-bottom: 0.25rem;
+    text-align: center;
+    width: 33%;
+}
+.ziyingMinList li a p{
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-bottom: 0.15rem;
+    margin-left: 0.25rem;
+}
+.ziyingMinList li a span{
+    font-size: 0.15rem;
+    font-family: '微软雅黑';
+}
+.ziyingMinList li:nth-child(1) a p{
+    background: url("../img/ziying/ziyingMinList1.png") no-repeat;
+    background-size: cover;
+}
+.ziyingMinList li:nth-child(2) a p{
+    background: url("../img/ziying/ziyingMinList2.png") no-repeat;
+    background-size: cover;
+}
+.ziyingMinList li:nth-child(3) a p{
+    background: url("../img/ziying/ziyingMinList3.png") no-repeat;
+    background-size: cover;
+}
+.ziyingMinList li:nth-child(4) a p{
+    background: url("../img/ziying/ziyingMinList4.png") no-repeat;
+    background-size: cover;
+}
+.ziyingMinList li:nth-child(5) a p{
+    background: url("../img/ziying/ziyingMinList5.png") no-repeat;
+    background-size: cover;
+}
+.ziyingMinList li:nth-child(6) a p{
+    background: url("../img/ziying/ziyingMinList6.png") no-repeat;
+    background-size: cover;
+}
+.ziyingJianjie{
+    height: 0.63rem;
+    background: #40d8d7;
+    font-family: '微软雅黑';
+    text-align: center;
+    padding-top: 0.2rem;
+    margin-bottom: 0.15rem;
+}
+.ziyingJianjie p{
+    font-size: 0.18rem;
+    color: #fff;
+    margin-bottom: 0.06rem;
+}
+.ziyingJianjie span{
+    color: #b3ffff;
+}
+.ziyingList a{
+    border-bottom: 0.1rem solid #f5f5f5;
+    text-decoration: none;
+}
+.ziyingList a div{
+    height: 2.435rem;
+    border: 0.005rem solid #939393;
+    position: relative;
+}
+.ziyingList a:nth-child(1) div{
+    background: url("../img/ziying/ziyingList1.png") no-repeat;
+    background-size: cover;
+}
+.ziyingList a:nth-child(2) div{
+    background: url("../img/ziying/ziyingList2.png") no-repeat;
+    background-size: cover;
+}
+.ziyingList a:nth-child(3) div{
+    background: url("../img/ziying/ziyingList3.png") no-repeat;
+    background-size: cover;
+}
+.ziyingList a:nth-child(4) div{
+    background: url("../img/ziying/ziyingList4.png") no-repeat;
+    background-size: cover;
+}
+.ziyingList a:nth-child(5) div{
+    background: url("../img/ziying/ziyingList5.png") no-repeat;
+    background-size: cover;
+}
+.ziyingList a:nth-child(6) div{
+    background: url("../img/ziying/ziyingList6.png") no-repeat;
+    background-size: cover;
+}
+.ziyingList a div span{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0.35rem;
+    line-height: 0.35rem;
+    text-align: center;
+    font-size: 0.12rem;
+    color: #fff;
+    background: rgba(0,0,0,0.6);
+}
+.ziyingList a h3{
+    font-size: 0.17rem;
+    font-weight: bold;
+    margin: 0.19rem 0 0 0.12rem;
+    border: none;
+}
+.ziyingList a p{
+    color: #666;
+    margin: 0.14rem 0.12rem;
+    line-height: 0.22rem;
+    border: none;
+}
+/* jianjie */
+.jianjieBanner{
+    width: 100%;
+    height: 2.005rem;
+    margin-top: 0.435rem;
+    background: url("../img/jianjie/jianjieBanner.png") no-repeat;
+    background-size: cover;
+}
+.jianjie p{
+    width: 92%;
+    margin: 0 0.15rem;
+    color: #666;
+    line-height: 0.24rem;
+    text-indent: 0.26rem;
+    word-break: break-all;
+}
+.jianjie span{
+    display: block;
+    margin-left: 0.05rem;
+    width: 3.62rem;
+    height: 3.04rem;
+    background: url("../img/jianjie/map.png") no-repeat;
+    background-size: cover;
+}
+.jianjie p:nth-child(1){
+    margin-top: 0.29rem;
+    margin-bottom: 0.15rem;
+}
+.jianjie p:nth-child(3){
+    margin-top: 0.25rem;
+}
+.jianjie p:nth-child(4){
+    margin-bottom: 0.25rem;
+}
+.fengcai{
+    background: #f7f7f7;
+    padding-top: 0.25rem;
+}
+.fengcai h3{
+    width: 0.985rem;
+    height: 0.33rem;
+    margin: 0 auto;
+    margin-bottom: 0.1rem;
+    background: url("../img/jianjie/fengcaiH3.png") no-repeat;
+    background-size: cover;
+}
+#fengcai{
+    padding: 0 0.05rem;
+}
+#fengcai a{
+    width: 3.315rem;
+    height: 1.795rem;
+    margin-left: 0.05rem;
+}
+#fengcai a:nth-last-child(1){
+    margin-right: 0.05rem;
+}
+#fengcai a img{
+    width: 100%;
+}
+#fengcai .swiper-wrapper{
+    margin-bottom: 0.39rem;
+}
+#fengcai .swiper-pagination{
+    bottom: 0.1rem;
+}
+#fengcai .swiper-pagination-bullet {
+    background: #dcdcdc;
+    opacity: 1;
+    margin: 0 0.03rem;
+}
+#fengcai .swiper-pagination-bullet-active{
+    background: #40d8d7;
+}
+/* news */
+.xinwenBanner{
+    margin-top: 0.435rem;
+    height: 2rem;
+    background: url("../img/news/xinwenBanner.png") no-repeat;
+    background-size: cover;
+}
+.newsList{
+    padding: 0.15rem 0;
+    background: #f5f5f5;
+}
+.newsList a{
+    margin-bottom: 0.1rem;
+}
+.newsList a div{
+    width: 1.49rem;
+    height: 1.36rem;
+    overflow: hidden;
+    background: #fff;
+    padding: 0 0.2rem 0 0.15rem;
+}
+.newsList a div h3{
+    font-size: 0.14rem;
+    color: #101016;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-decoration: underline;
+    line-height: 0.22rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.12rem;
+}
+.newsList a div p{
+    font-size: 0.12rem;
+    color: #666;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 0.2rem;
+}
+.newsList a img{
+    width: 1.905rem;
+    height: 1.36rem;
+}
+/* lianxi */
+.lianxiBanner{
+    margin-top: 0.435rem;
+    height: 2rem;
+    background: url("../img/lianxi/lianxiBanner.png") no-repeat;
+    background-size: cover;
+}
+.lianxiAdress{
+    padding: 0.3rem 0.15rem 0.15rem 0.15rem;
+}
+.lianxiAdress li{
+    margin-bottom: 0.15rem;
+}
+.lianxiAdress li h3{
+    font-size: 0.15rem;
+    color: #000;
+    height: 0.24rem;
+    width: 0.56rem;
+    margin-right: 0.12rem;
+    text-indent: 0.25rem;
+    line-height: 0.24rem;
+}
+.lianxiAdress li:nth-child(1) h3{
+    background: url("../img/lianxi/lianxiAdress1.png") no-repeat;
+    background-size: contain;
+    margin-bottom: 0.09rem;
+}
+.lianxiAdress li:nth-child(2) h3{
+    background: url("../img/lianxi/lianxiAdress2.png") no-repeat;
+    background-size: contain;
+    margin-bottom: 0.09rem;
+}
+.lianxiAdress li:nth-child(3) h3{
+    background: url("../img/lianxi/lianxiAdress3.png") no-repeat;
+    background-size: contain;
+    margin-bottom: 1.24rem;
+}
+.lianxiAdress li p{
+    color: #666;
+}
+.lianxiAdress li:nth-child(1) p{
+    padding-bottom: 0.105rem;
+    border-bottom: 0.005rem solid #d6d6d6;
+}
+.lianxiAdress li:nth-child(2) p{
+    padding-bottom: 0.105rem;
+    border-bottom: 0.005rem solid #d6d6d6;
+}
+.lianxiAdress li:nth-child(3) p{
+    line-height: 0.21rem;
+    width: 80%;
+}
+#baiduMap{
+    height: 2rem;
+    width: 100%;
+    margin-bottom: 0.15rem;
+}
+#baiduMap .BMapLabel{
+    padding: 10px!important;
+    left: -90px!important;
+    top: -49px!important;
+    border: none!important;
+    box-shadow: 6px 2px 8px 0 #666!important;
+}
+.fangshi{
+    height: 0.625rem;
+    padding-top: 0.205rem;
+    background: #40d8d7;
+    text-align: center;
+}
+.fangshi p{
+    font-size: 0.18rem;
+    color: #fff;
+    margin-bottom: 0.05rem;
+}
+.fangshi span{
+    color: #b3ffff;
+}
+.lianxi{
+    padding: 0.23rem;
+}
+.lianxi li{
+    height: 0.275rem;
+    line-height: 0.275rem;
+    margin-bottom: 0.24rem;
+    font-size: 0.15rem;
+    color: #000;
+    text-indent: 0.38rem;
+}
+.lianxi li a{
+	color: #000;
+}
+.lianxi li:nth-child(1), .lianxi li:nth-child(2){
+    background: url("../img/lianxi/lianxi1.png") no-repeat;
+    background-size: contain;
+}
+.lianxi li:nth-child(3){
+    background: url("../img/lianxi/lianxi2.png") no-repeat;
+    background-size: contain;
+}
+.lianxi li:nth-child(4){
+    background: url("../img/lianxi/lianxi3.png") no-repeat;
+    background-size: contain;
+    margin-bottom: 0;
+}
+/* 产品介绍页 */
+.logo_r{
+    display: block;
+    width: 1.68rem;
+    height: 0.15rem;
+    margin-right: 0.15rem;
+    background: url("../img/productList/logo_r.png") no-repeat;
+    background-size: contain;
+}
+.productList{
+    margin-top: 0.435rem;
+}
+.productList img{
+    width: 100%;
+    height: 100%;
+}

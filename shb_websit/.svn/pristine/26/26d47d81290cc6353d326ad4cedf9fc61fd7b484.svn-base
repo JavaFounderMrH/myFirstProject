@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.user.LandlordInfoDao">
+
+	<sql id="Base_Column_List">
+		sli_id as sliId,username as username , password as
+		password,type as
+		type,name as name,nickname as nickname,phone as
+		phone,portrait_src as portraitSrc,introduction as introduction,
+		certificates_type as certificatesType ,certificates_number as
+		certificatesNumber,state as state,res_time as resTime,
+		real_name_system as realNameSystem
+	</sql>
+	<!-- ID 查询房东信息 -->
+	<select id="queryLandlordInfoById" parameterType="long"
+		resultType="LandlordInfo">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM shb_landlord_info where sli_id = #{sliId,jdbcType=BIGINT}
+	</select>
+	<select id="queryLandlordInfoByName" parameterType="String"
+		resultType="LandlordInfo">
+		SELECT
+		a.sli_id AS sliId,
+		a.username AS username,
+		a.`name` AS
+		NAME,
+		a.nickname AS nickname,
+		a.portrait_src AS portraitSrc,
+		a.introduction AS introduction,
+		a.type AS type
+		FROM
+		shb_landlord_info a
+		WHERE
+		a.username = #{username}
+	</select>
+	<select id="queryLandlordReceivables" resultType="LandlordReceivables"
+		parameterType="long">
+		SELECT
+		b.bank_user_name AS bankUserName,
+		b.bank_address AS bankAddress,
+		b.bank_account AS bankAccount
+		FROM
+		shb_room_info a
+		LEFT JOIN shb_landlord_receivables b ON a.slr_rid = b.slr_id
+		WHERE
+		a.sri_id = #{srid}
+		AND a.is_delete = 1
+	</select>
+	<update id="updateByPrimaryKeySelective" parameterType="LandlordInfo">
+		update shb_landlord_info
+		<set>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null and password !='' ">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=TINYINT},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="nickname != null">
+				nickname = #{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="portraitSrc != null">
+				portrait_src = #{portraitSrc,jdbcType=VARCHAR},
+			</if>
+			<if test="certificatesType != null">
+				certificates_type = #{certificatesType,jdbcType=TINYINT},
+			</if>
+			<if test="certificatesNumber != null">
+				certificates_number =
+				#{certificatesNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=TINYINT},
+			</if>
+			<if test="sriRid != null">
+				sri_rid = #{sriRid,jdbcType=BIGINT},
+			</if>
+			<if test="registrant != null">
+				registrant = #{registrant,jdbcType=VARCHAR},
+			</if>
+			<if test="resTime != null">
+				res_time = #{resTime},
+			</if>
+			<if test="suiRid != null">
+				sui_rid = #{suiRid,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="operator != null">
+				operator = #{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime},
+			</if>
+			<if test="introduction != null">
+				introduction = #{introduction},
+			</if>
+		</set>
+		where sli_id = #{sliId,jdbcType=BIGINT}
+	</update>
+</mapper>

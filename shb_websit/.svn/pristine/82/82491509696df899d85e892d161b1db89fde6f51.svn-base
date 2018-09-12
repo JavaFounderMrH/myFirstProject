@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.activity.ShbRecommendedBitMapper">
+	<sql id="Base_Column_List">
+		id, sort,flag, title,broadcast_img, jump_type,
+		jump_value,exhibition_type,operator, activity_sub_title, modify_time,
+		create_time,activity_label_img, activity_img,
+		ziying_advertisement_img,
+		is_delete
+	</sql>
+	<select id="selectByPrimaryKeyShbRecommendedBit" resultType="ShbRecommendedBit"
+		parameterType="ShbRecommendedBit">
+		select
+		<include refid="Base_Column_List" />
+		from shb_recommended_bit
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<select id="queryShbRecommendedBitList" resultType="ShbRecommendedBit"
+		parameterType="ShbRecommendedBit">
+		select
+		<include refid="Base_Column_List" />
+		from shb_recommended_bit
+		WHERE is_delete = 1
+		<if test = "flag != null ">
+			AND flag = #{flag}
+		</if>
+		ORDER BY sort DESC
+	</select>
+</mapper>

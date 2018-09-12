@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.city.CityDao">
+	<!-- 省 -->
+	<select id="queryCityProvince" resultType="com.shb.web.dto.city.CityInfoDto" parameterType="City">
+		SELECT a.province as province from shb_city a GROUP BY a.province ORDER BY a.sc_id
+	</select>
+	<!-- 市 -->
+	<select id="queryCityArea" resultType="com.shb.web.dto.city.CityInfoDto" parameterType="String">
+		SELECT a.city_name as cityName from shb_city a where a.province = #{province}
+		GROUP BY a.city_name
+	</select>
+</mapper>

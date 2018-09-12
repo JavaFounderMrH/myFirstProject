@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myview">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "format-detection" content = "telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="山海边（北京）电子商务股份有限公司（简称山海边），是一家高品质的旅游度假房屋预定平台，提供旅游度假公寓、别墅、酒店的在线搜索、查询和交易服务。既为旅行
+    者提供了优质的度假新体验，又为业主提供了盘活闲置资产的托管增值服务。山海边融合了房地产、旅游和互联网三方面的优势资源，跨界打通产业链，实力雄厚，值得信赖。"/>
+    <meta name="Keywords" content="山海边短租,山海边电子商务,短租房,旅游,民宿,短租公寓,酒店式公寓,山海边,托管,山海边托管,公寓,家庭旅馆,酒店预订,日租房,客栈">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="wanghao m15075182791@163.com"/><!-- 网页作者 -->
+    <title ng-bind="title">山海边短租-专注于提供美好旅宿|民宿,公寓,酒店,客栈,别墅预订平台</title>
+    <link rel="stylesheet" type="text/css" href="sunholiday/css/main.css">
+    <link rel="stylesheet" type="text/css" href="sunholiday/css/twolevel.css">
+    <link rel="stylesheet" type="text/css" href="sunholiday/lib/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" type="text/css" href="sunholiday/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="sunholiday/css/jquery.pagination.css">
+    <!--title小图标-->
+    <link rel="icon" href="sunholiday/image/homeIco.ico" type="image/x-icon"/>
+
+    <script type="text/javascript" src="sunholiday/lib/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="sunholiday/lib/layui/layui.all.js"></script>
+	<script type="text/javascript" src="sunholiday/lib/js/angular.min.js"></script>
+    <script type="text/javascript" src="sunholiday/lib/js/angular-ui-router.min.js"></script>
+         　<meta property="og:image" content="http://www.shanhaibian.com/xinban.png"/>
+    
+</head>
+<body data-ui-view>
+<!-- <a href="http://webscan.360.cn/index/checkwebsite/url/www.shanhaibian.com"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/79f72f515f64a2548a1e84755d80168b/?size=74x27"/></a> -->
+     <script type="text/javascript">
+         if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            //window.location.href = "http://www.shanhaibian.com/shb_website_web/homeApp.html";
+           window.location.href = "appIndex.html";
+        } else {
+            /* window.location.href = "pc"; */
+        } 
+        
+    </script>  
+</body> 
+    <script type="text/javascript" src="sunholiday/lib/js/swiper-3.4.2.jquery.min.js"></script>
+    <script type="text/javascript" src="sunholiday/js/jquery.pagination.min.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=PkYXeG59mEbkflB0ZtyFMSkauTgCIwZh&s=1"></script><!-- 百度地图密钥 -->
+    <script type="text/javascript" src="sunholiday/js/myview.js"></script>
+</html>

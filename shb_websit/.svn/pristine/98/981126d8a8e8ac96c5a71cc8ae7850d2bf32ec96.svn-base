@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.room.RoomBedClassificationDao">
+	<select id="queryRoomBedClassificationCount" parameterType="Long"
+		resultType="Integer">
+		SELECT
+		SUM(a.bed_number)
+		FROM
+		shb_bed_classification a
+		WHERE
+		a.sri_rid = #{sriRid}
+		AND is_delete =
+		1
+	</select>
+	<select id="queryRoomBedType" parameterType="Long" resultType="RoomBedClassification">
+		SELECT
+		sum(a.bed_number)as bedNums,
+		a.bed_size as bedSize
+		FROM
+		`shb_bed_classification` a
+		WHERE
+		a.sri_rid = #{sriRid}
+		AND a.is_delete = 1
+		GROUP BY
+		a.bed_type
+	</select>
+</mapper>

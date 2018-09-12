@@ -1,0 +1,1202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.room.RoomInfoDao">
+	<sql id="Base_Column_List">
+		sri_id, room_title, room_measure_area, room_number,
+		living_room_number,
+		bedroom_number,
+		toilet_number, study_number,
+		kitchen_number, balcony_number, house_type, lease_type,
+		whether_overnight, check_time AS checkTime, check_out_time AS
+		checkOutTime, reception_time,
+		check_number, least_check_day_number,
+		whether_add_bed,
+		reception_sex, whether_pet, whether_somking,
+		whether_party,
+		whether_cook, wherther_refund, room_status, city_rid,
+		ol_pay_proportion, address,
+		address_info, longitude, latitude,
+		landlord_rid, upload_time,
+		close_time, create_time,
+		operator,
+		modify_time, system_user_rid, is_delete, whether_check_true,
+		upload_room_ip,
+		commission_proportion, room_upload, room_describe,
+		personality_describe, inside_discribe,
+		add_bed_charge_info,
+		additional_costs,
+		other_tips
+	</sql>
+	<!-- 查询某城市房间详情 -->
+	<select id="queryRoomInfo" parameterType="com.shb.web.dto.room.RoomInfoDto"
+		resultType="com.shb.web.dto.room.RoomDtos">
+		SELECT
+		c.sri_id AS sriId,
+		c.room_title AS roomTitle,
+		c.room_upload AS
+		roomUpload,
+		d.portrait_src AS portraitSrc,
+		c.lease_type AS leaseType,
+		c.check_number AS checkNumber,
+		c.whether_check_true AS
+		whetherCheckTrue,
+		s.pic_src AS picSrc,
+		round(ca.price/(1-IFNULL(c.commission_proportion,0)/100),0) AS price,
+		ca.price_type
+		AS priceType,
+		ca.discount AS discount,
+		(
+		SELECT
+		SUM(cl.bed_number)
+		FROM
+		shb_bed_classification cl
+		WHERE
+		cl.sri_rid =
+		c.sri_id AND cl.is_delete =
+		1
+		) badNums,
+		IFNULL(
+		(
+		SELECT
+		AVG(ev.score)
+		FROM
+		shb_room_evaluate ev
+		WHERE
+		ev.sri_rid = c.sri_id AND ev.is_delete = 1
+		),
+		5
+		) score
+
+		FROM
+		shb_hot_room b,
+		shb_room_info c,
+		shb_landlord_info d,
+		shb_room_picture s,
+		shb_room_price_calendar ca
+		WHERE
+		b.room_id = c.sri_id
+		AND c.room_upload = d.username
+		AND c.sri_id = s.sri_rid
+		AND ca.sri_rid =
+		c.sri_id AND d.state = 0
+		AND
+		b.is_delete = 1
+		AND c.is_delete =
+		1
+		AND
+		d.is_delete=1
+		AND s.is_delete = 1
+		AND s.whether_thumbnail = 1
+		AND
+		c.room_status = 1
+		AND
+		DATE_FORMAT(ca.time,
+		'%Y-%m-%d') =
+		DATE_FORMAT(NOW(), '%Y-%m-%d')
+		AND
+		c.room_type = 1
+		<if test="type!=null and type!=''">
+			AND b.type = #{type}
+		</if>
+		<if test="type==0">
+			AND b.type = #{type}
+		</if>
+		<if test="areaCode!=null and areaCode!=''">
+			AND b.area_code = #{areaCode}
+		</if>
+		<if test="sriIds!=null and sriIds.size()>0">
+			AND c.sri_id NOT in
+			<foreach collection="sriIds" item="sriIds" index="index"
+				open="(" close=")" separator=",">
+				#{sriIds}
+			</foreach>
+		</if>
+		GROUP BY
+		b.room_id
+		<!-- 默认排序 -->
+		<if test="sort==0">
+			ORDER BY
+			b.sort DESC
+		</if>
+		<if test="sort==1">
+			ORDER BY
+			ca.price
+		</if>
+		<if test="sort==2">
+			ORDER BY
+			ca.price DESC
+		</if>
+		<if test="sort==3">
+			ORDER BY
+			b.sort DESC
+		</if>
+	</select>
+
+	<select id="queryRoomInfoList" parameterType="com.shb.web.dto.room.RoomInfoDto"
+		resultType="com.shb.web.dto.room.RoomDtos">
+		SELECT
+		c.bedroom_number AS bedroomNumber,
+		c.living_room_number AS livingRoomNumber,
+		c.kitchen_number AS kitchenNumber,
+		c.toilet_number AS toiletNumber,
+		c.balcony_number AS balconyNumber,
+		d.nickname AS landlordNickname,
+		c.latitude AS
+		latitude,c.longitude AS longitude,
+		c.sri_id AS
+		sriId,
+		c.room_title AS roomTitle,
+		c.room_upload AS
+		roomUpload,
+		d.portrait_src AS
+		portraitSrc,
+		c.lease_type
+		AS
+		leaseType,
+		c.check_number AS
+		checkNumber,
+		c.whether_check_true AS
+		whetherCheckTrue,
+		s.pic_src AS
+		picSrc,
+		round(c.price/(1-IFNULL(c.commission_proportion,0)/100),0)
+		AS
+		price,
+		round(c.price/(1-IFNULL(c.commission_proportion,0)/100)/(IFNULL(c.discount,10)/10),0)
+		AS
+		discountPrice,
+		c.price_days_type
+		AS
+		priceType,
+		c.discount AS
+		discount,
+		(
+		SELECT
+		SUM(cl.bed_number)
+		FROM
+		shb_bed_classification cl
+		WHERE
+		cl.sri_rid =
+		c.sri_id and cl.is_delete = 1
+		) badNums,
+		IFNULL(
+		(
+		SELECT
+		AVG(ev.score)
+		FROM
+		shb_room_evaluate ev
+		WHERE
+		ev.sri_rid = c.sri_id AND
+		ev.is_delete =
+		1
+		),
+		5
+		) score
+		<if test="username!=null and username!=''">
+			,(
+			SELECT
+			falg
+			FROM
+			shb_room_collection rc
+			WHERE
+			username =
+			#{username}
+			AND rc.sri_rid = c.sri_id
+			) AS falg,
+			d.sli_id AS sliId
+		</if>
+		<if test="latitude!=null and latitude!=''">
+			,SQRT(
+			POW(
+			6370693.5 * COS(#{latitude} * PI() / 180) * (
+
+			IF
+			(
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			) &gt; PI(),
+			2 *
+			PI() - (
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			),
+			(
+
+			IF (
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			) &lt; - PI(),
+			2 *
+			PI() + (
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			),
+			(
+			#{longitude}* PI() / 180 - c.longitude * pi() / 180
+			)
+			)
+			)
+			)
+			),
+			2
+			) + POW(
+			6370693.5 * (
+			#{latitude} * PI() / 180 - c.latitude * pi() / 180
+			),
+			2
+			)
+			)
+			AS juli
+		</if>
+		FROM
+		shb_room_info c 
+		left join shb_landlord_info d on c.room_upload = d.username
+		left join shb_room_picture s on c.sri_id = s.sri_rid
+		<if test="supString!=null and supString!=''">
+		left join (select g.sri_rid ,GROUP_CONCAT(g.srsf_rid ORDER BY g.srsf_rid) srsf_zid from shb_supporting_room g where g.srsf_rid is not null GROUP BY g.sri_rid ORDER BY g.srsf_rid) p on c.sri_id = p.sri_rid
+		</if>
+		WHERE
+		<if test="areaCode!=null and areaCode!=''">
+			 c.area_code = #{areaCode} AND
+		</if>
+		d.state = 0
+		AND c.is_delete = 1
+		AND d.is_delete = 1
+		AND
+		s.whether_thumbnail = 1
+		AND c.room_status = 1
+		AND
+		c.room_type = 1
+		<if test="supString!=null and supString!=''">
+			AND p.srsf_zid LIKE CONCAT(CONCAT('%', #{supString}),'%')
+		</if>
+		
+		<if test="roomUpload!=null and roomUpload!=''">
+			AND c.room_upload = #{roomUpload}
+		</if>
+		<if test="sriId!=null and sriId!=''">
+			AND c.sri_id = #{sriId}
+		</if>
+		<if test="sriIds!=null and sriIds.size()>0">
+			AND c.sri_id NOT in
+			<foreach collection="sriIds" item="sriIds" index="index"
+				open="(" close=")" separator=",">
+				#{sriIds}
+			</foreach>
+		</if>
+			<if test="latitude!=null and latitude!=''">
+				AND
+				SQRT(
+				POW(
+				6370693.5 * COS(#{latitude} * PI() / 180) * (
+
+				IF (
+				(
+				#{longitude} * PI() / 180 - c.longitude * pi() / 180
+				) &gt;
+				PI(),
+				2 * PI() - (
+				#{longitude} * PI() / 180 - c.longitude * pi() /
+				180
+				),
+				(
+
+				IF (
+				(
+				#{longitude} * PI() / 180 - c.longitude * pi() / 180
+				)
+				&lt; - PI(),
+				2 * PI() + (
+				#{longitude} * PI() / 180 - c.longitude *
+				pi() / 180
+				),
+				(
+				#{longitude} * PI() / 180 - c.longitude * pi() / 180
+				)
+				)
+				)
+				)
+				),
+				2
+				) + POW(
+				6370693.5 * (
+				#{latitude} * PI() / 180 - c.latitude *
+				pi() / 180
+				),
+				2
+				)
+				) &lt;= 30000
+			</if>
+		<if test="bedroomNumber != null and bedroomNumber != 0 and bedroomNumber != 3">
+			AND c.bedroom_number = #{bedroomNumber}
+		</if>
+		<if test="bedroomNumber != 0 and bedroomNumber == 3">
+			AND c.bedroom_number &gt;= 3
+		</if>
+		<if test="houseType != null and houseType != ''">
+			AND c.house_type = #{houseType}
+		</if>
+		GROUP BY
+		c.sri_id
+		<!-- 默认排序 -->
+		<if test="sort==0">
+			ORDER BY
+			c.create_time DESC ,c.price
+		</if>
+		<if test="sort==1">
+			ORDER BY
+			c.price
+		</if>
+		<if test="sort==2">
+			ORDER BY
+			c.price DESC
+		</if>
+		<if test="sort==4">
+			ORDER BY
+			juli,c.price,c.create_time DESC
+		</if>
+		<if test="sort==5">
+			ORDER BY
+			score DESC,c.price,c.create_time DESC
+		</if>
+	</select>
+	<!-- ID 查询房间图片 -->
+	<select id="queryRoomPicture" parameterType="long" resultType="RoomPicture">
+		SELECT
+		a.pic_src AS picSrc,
+		a.whether_thumbnail AS whetherThumbnail
+		FROM
+		`shb_room_picture` a
+		WHERE
+		a.is_delete = 1
+		AND a.sri_rid = #{sriRid}
+		ORDER BY a.whether_thumbnail DESC
+	</select>
+	<!-- 房间ID 查询配套设施 -->
+	<select id="queryRoomSupportingFacilities" parameterType="long"
+		resultType="RoomSupportingFacilities">
+		SELECT
+		b.srsf_id AS srsfId,
+		b.`name` AS name,
+		b.src AS src
+		FROM
+		shb_supporting_room a
+		LEFT JOIN shb_room_supporting_facilities b ON
+		a.srsf_rid = b.srsf_id
+		WHERE
+		a.srsf_rid IS NOT NULL
+		AND is_delete = 1
+		AND
+		a.sri_rid = #{sriRid}
+
+		ORDER BY b.srsf_id
+	</select>
+	<!--ID 查询房东服务 -->
+	<select id="queryRoomLandlordService" parameterType="long"
+		resultType="LandlordService">
+		SELECT
+		b.sls_id AS slsId,
+		b.type as type,
+		b.`name` as name
+		FROM
+		`shb_room_landlord` a
+		LEFT JOIN shb_landlord_service b ON a.sls_rid
+		=
+		b.sls_id
+		WHERE
+		a.is_delete = 1
+		AND a.sri_rid = #{sriRid}
+	</select>
+	<!-- 查询房间日历价格 -->
+	<select id="queryRoomPriceCalendar" parameterType="com.shb.web.dto.room.RoomPriceCalendarDto"
+		resultType="com.shb.web.dto.room.RoomPriceCalendarDto">
+		SELECT
+		IF (a.nums = 0, 0, 1) roomCheck,
+		DATE_FORMAT(a.time, '%Y-%m-%d')
+		time,
+		round(a.price/(1-IFNULL(b.commission_proportion,0)/100),0) as
+		price,
+		a.nums as nums
+		FROM
+		shb_room_price_calendar a
+		LEFT JOIN
+		shb_room_info b ON a.sri_rid = b.sri_id
+		WHERE
+		a.sri_rid = #{sriRid}
+		<if test="type==0">
+			AND DATE_FORMAT(a.time, '%m') = DATE_FORMAT(NOW(), '%m')
+		</if>
+		<if test="type==1">
+			<!-- AND DATE_FORMAT(a.time, '%Y-%m-%d') &gt;= DATE_FORMAT(NOW(), '%Y-%m-%d') -->
+			AND DATE_FORMAT(a.time, '%Y-%m-%d') BETWEEN DATE_FORMAT(
+			NOW(),
+			'%Y-%m-%d'
+			)
+			AND DATE_FORMAT(
+			DATE_SUB(
+			str_to_date(#{time}, '%Y-%m-%d'),
+			INTERVAL -5 MONTH
+			),
+			'%Y-%m-%d'
+			)
+		</if>
+		AND a.is_delete = 1
+		GROUP BY a.time
+	</select>
+	<!--房间预订 -->
+
+	<select id="queryReservationRoom" parameterType="long"
+		resultType="ReservationRoom">
+		SELECT
+		a.room_up_day as roomUpDay,
+		a.wherther_refund as
+		whertherRefund,
+		a.lease_type as leaseType,
+		a.sri_id as sriId,
+		a.whether_overnight as
+		whetherOvernight,
+		round(ca.price/(1-IFNULL(a.commission_proportion,0)/100),0) as price,
+		p.pic_src as
+		picSrc ,
+		a.check_number as checkNumber,
+		a.room_title
+		as
+		roomTitle,
+		a.bedroom_number as bedroomNumber,
+		a.living_room_number AS livingRoomNumber ,
+		a.toilet_number as toiletNumber,
+		a.kitchen_number AS kitchenNumber,
+		a.balcony_number AS balconyNumber,
+		(
+		SELECT
+		sum(b.bed_number)
+		FROM
+		shb_bed_classification b
+		WHERE
+		a.sri_id = b.sri_rid
+		AND b.is_delete =1
+		) bedNumber,a.check_time as
+		checkTime,a.check_out_time as checkOutTime
+		FROM
+		shb_room_info a,
+		shb_room_picture p,
+		shb_room_price_calendar ca
+		WHERE
+		a.sri_id = p.sri_rid
+		AND ca.sri_rid = a.sri_id
+		AND a.is_delete = 1
+		AND p.whether_thumbnail =
+		1
+		AND a.sri_id =
+		#{sriId}
+		AND
+		DATE_FORMAT(ca.time,
+		'%Y-%m-%d') =
+		DATE_FORMAT(NOW(), '%Y-%m-%d')
+		GROUP BY a.sri_id
+	</select>
+	<select id="queryRoomPriceCalendarTime" parameterType="long"
+		resultType="RoomPriceCalendar">
+		SELECT
+		DATE_FORMAT(a.time, '%Y-%m-%d') AS time
+		FROM
+		shb_room_price_calendar a
+		WHERE
+		a.sri_rid = #{sriRid}
+		AND a.nums > 0
+		AND
+		DATE_FORMAT(a.time, '%Y-%m-%d') &gt;= DATE_FORMAT(NOW(), '%Y-%m-%d')
+		AND a.is_delete = 1
+	</select>
+
+	<select id="queryRoomPriceCalendarNums" parameterType="RoomPriceCalendar"
+		resultType="RoomPriceCalendar">
+		SELECT
+		DATE_FORMAT(c.time, '%Y-%m-%d'),
+		MIN(c.nums) AS nums
+		FROM
+		shb_room_price_calendar c
+		WHERE
+		c.sri_rid = #{sriRid}
+		<if test="Overnight==2">
+			AND DATE_FORMAT(c.time, '%Y-%m-%d') BETWEEN
+			DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+			AND DATE_FORMAT(#{endTime},
+			'%Y-%m-%d')
+		</if>
+		<if test="Overnight == 1">
+			AND DATE_FORMAT(c.time, '%Y-%m-%d') &gt;=
+			DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+			AND
+			DATE_FORMAT(c.time,
+			'%Y-%m-%d') &lt; DATE_FORMAT(#{endTime}, '%Y-%m-%d')
+		</if>
+	</select>
+	<select id="queryRoomPriceCalendarTotal" parameterType="RoomPriceCalendar"
+		resultType="RoomPriceCalendar">
+		SELECT
+		DATE_FORMAT(c.time, '%Y-%m-%d'),
+		SUM(
+		round(
+		c.price / (
+		1 -
+		IFNULL(b.commission_proportion, 0) / 100
+		),
+		0
+		)
+		) AS price
+		FROM
+		shb_room_price_calendar c
+		LEFT JOIN
+		shb_room_info b ON c.sri_rid =
+		b.sri_id
+		WHERE
+		c.sri_rid = #{sriRid}
+		AND c.is_delete =
+		1
+		<if test="Overnight==2">
+			AND DATE_FORMAT(c.time, '%Y-%m-%d') BETWEEN
+			DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+			AND DATE_FORMAT(#{endTime},
+			'%Y-%m-%d')
+		</if>
+		<if test="Overnight == 1">
+			AND DATE_FORMAT(c.time, '%Y-%m-%d') &gt;=
+			DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+			AND
+			DATE_FORMAT(c.time,
+			'%Y-%m-%d') &lt; DATE_FORMAT(#{endTime}, '%Y-%m-%d')
+		</if>
+	</select>
+
+	<!-- <select id="querylandlordStatement" parameterType="RoomPriceCalendar"
+		resultType="RoomPriceCalendar">
+		SELECT
+		DATE_FORMAT(c.time, '%Y-%m-%d'),
+		SUM(
+		c.price
+		) AS price
+		FROM
+		shb_room_price_calendar c
+		LEFT JOIN
+		shb_room_info b ON c.sri_rid =
+		b.sri_id
+		WHERE
+		c.sri_rid = #{sriRid}
+		AND c.is_delete =
+		1
+		<if test="Overnight==0">
+			AND DATE_FORMAT(c.time, '%Y-%m-%d') BETWEEN
+			DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+			AND DATE_FORMAT(#{endTime},
+			'%Y-%m-%d')
+		</if>
+		<if test="Overnight == 1">
+			AND DATE_FORMAT(c.time, '%Y-%m-%d') &gt;=
+			DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+			AND
+			DATE_FORMAT(c.time,
+			'%Y-%m-%d') &lt; DATE_FORMAT(#{endTime}, '%Y-%m-%d')
+		</if>
+	</select> -->
+
+	<select id="selectRoomInfo" parameterType="com.shb.web.dto.room.RoomInfoDto"
+		resultType="com.shb.web.dto.room.RoomDtos">
+		SELECT
+		sic.latitude,
+		sic.longitude,
+		sic.sriId,
+		sic.roomTitle,
+		sic.roomUpload,
+		sic.portraitSrc,
+		sic.leaseType,
+		sic.checkNumber,
+		sic.whetherCheckTrue,
+		sic.picSrc,
+		sic.price,
+		sic.priceType,
+		sic.discount,sic.badNums,sic.score
+		from (
+		SELECT
+		c.sri_id AS sriId,
+		c.room_title AS roomTitle,
+		c.room_upload AS roomUpload,
+		c.latitude AS
+		latitude,c.longitude AS
+		longitude,
+		d.portrait_src
+		AS portraitSrc,
+		c.lease_type AS leaseType,
+		c.check_number AS
+		checkNumber,
+		c.whether_check_true AS whetherCheckTrue,
+		s.pic_src AS
+		picSrc,
+		round(ca.price/(1-IFNULL(c.commission_proportion,0)/100),0)
+		AS price,
+		ca.price_type AS priceType,
+		ca.discount AS
+		discount,
+		(
+		SELECT
+		SUM(cl.bed_number)
+		FROM
+		shb_bed_classification cl
+		WHERE
+		cl.sri_rid =
+		c.sri_id and cl.is_delete =
+		1
+		) badNums,
+		IFNULL(
+		(
+		SELECT
+		AVG(ev.score)
+		FROM
+		shb_room_evaluate ev
+		WHERE
+		ev.sri_rid = c.sri_id
+		),
+		5
+		)
+		score
+		<if test="latitude!=null and latitude!=''">
+			,SQRT(
+			POW(
+			6370693.5 * COS(#{latitude} * PI() / 180) * (
+
+			IF
+			(
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			) &gt; PI(),
+			2 *
+			PI() - (
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			),
+			(
+
+			IF (
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			) &lt; - PI(),
+			2 *
+			PI() + (
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			),
+			(
+			#{longitude}* PI() / 180 - c.longitude * pi() / 180
+			)
+			)
+			)
+			)
+			),
+			2
+			) + POW(
+			6370693.5 * (
+			#{latitude} * PI() / 180 - c.latitude * pi() / 180
+			),
+			2
+			)
+			)
+			AS juli
+		</if>
+		FROM
+		shb_hot_room b,
+		shb_room_info c,
+		shb_landlord_info d,
+		shb_room_picture s,
+		shb_room_price_calendar ca
+		WHERE
+		b.room_id = c.sri_id
+		AND c.room_upload = d.username
+		AND c.sri_id =
+		s.sri_rid
+		AND ca.sri_rid =
+		c.sri_id
+		AND
+		d.state = 0
+		AND
+		b.is_delete = 1
+		AND c.is_delete = 1
+		AND
+		d.is_delete = 1
+		AND s.is_delete =
+		1
+		AND s.whether_thumbnail = 1
+		AND
+		c.room_status = 1
+		AND
+		DATE_FORMAT(ca.time, '%Y-%m-%d') =
+		DATE_FORMAT(NOW(), '%Y-%m-%d')
+		AND
+		c.area_code = #{areaCode}
+		AND b.type =
+		0
+		AND c.room_type = 1
+		<if test="latitude!=null and latitude!=''">
+			AND
+			SQRT(
+			POW(
+			6370693.5 * COS(#{latitude} * PI() / 180) * (
+
+			IF (
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			) &gt;
+			PI(),
+			2 * PI() - (
+			#{longitude} * PI() / 180 - c.longitude * pi() /
+			180
+			),
+			(
+
+			IF
+			(
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			)
+			&lt; - PI(),
+			2
+			* PI() + (
+			#{longitude} * PI() / 180 - c.longitude *
+			pi() / 180
+			),
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			)
+			)
+			)
+			)
+			),
+			2
+			) + POW(
+			6370693.5 * (
+			#{latitude} * PI() / 180 - c.latitude *
+			pi() / 180
+			),
+			2
+			)
+			)
+			&lt;= 30000
+		</if>
+		<if test="sort==4">
+			ORDER BY
+			juli
+		</if>
+		<if test="sort==1">
+			ORDER BY b.sort DESC
+		</if>
+		)sic
+		UNION
+		SELECT
+		sis.latitude,
+		sis.longitude,
+		sis.sriId,
+		sis.roomTitle,
+		sis.roomUpload,
+		sis.portraitSrc,
+		sis.leaseType,
+		sis.checkNumber,
+		sis.whetherCheckTrue,
+		sis.picSrc,
+		sis.price,
+		sis.priceType,
+		sis.discount,sis.badNums,sis.score
+		from
+		(
+		SELECT
+		c.sri_id AS sriId,
+		c.room_title AS
+		roomTitle,
+		c.room_upload AS
+		roomUpload,
+		c.latitude AS
+		latitude,c.longitude AS longitude,
+		d.portrait_src AS portraitSrc,
+		c.lease_type AS leaseType,
+		c.check_number AS checkNumber,
+		c.whether_check_true AS
+		whetherCheckTrue,
+		s.pic_src AS picSrc,
+		round(ca.price/(1-IFNULL(c.commission_proportion,0)/100),0)
+		AS price,
+		ca.price_type AS
+		priceType,
+		ca.discount AS discount,
+		(
+		SELECT
+		SUM(cl.bed_number)
+		FROM
+		shb_bed_classification cl
+		WHERE
+		cl.sri_rid =
+		c.sri_id and cl.is_delete =
+		1
+		) badNums,
+		IFNULL(
+		(
+		SELECT
+		AVG(ev.score)
+		FROM
+		shb_room_evaluate ev
+		WHERE
+		ev.sri_rid = c.sri_id
+		),
+		5
+		)
+		score
+		<if test="latitude!=null and latitude!=''">
+			,SQRT(
+			POW(
+			6370693.5 * COS(#{latitude} * PI() / 180) * (
+
+			IF
+			(
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			) &gt; PI(),
+			2 *
+			PI() - (
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			),
+			(
+
+			IF (
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			) &lt; - PI(),
+			2 *
+			PI() + (
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			),
+			(
+			#{longitude}* PI() / 180 - c.longitude * pi() / 180
+			)
+			)
+			)
+			)
+			),
+			2
+			) + POW(
+			6370693.5 * (
+			#{latitude} * PI() / 180 - c.latitude * pi() / 180
+			),
+			2
+			)
+			)
+			AS juli
+		</if>
+		FROM
+		shb_room_info c,
+		shb_landlord_info d,
+		shb_room_picture s,
+		shb_room_price_calendar ca
+		WHERE
+		c.room_upload =
+		d.username
+		AND c.sri_id =
+		s.sri_rid
+		AND ca.sri_rid = c.sri_id
+		AND d.state = 0
+		AND c.is_delete = 1
+		AND c.is_delete
+		= 1
+		AND d.is_delete = 1
+		AND s.is_delete = 1
+		AND
+		s.whether_thumbnail = 1
+		AND c.room_status = 1
+		AND
+		DATE_FORMAT(ca.time,
+		'%Y-%m-%d') =
+		DATE_FORMAT(NOW(), '%Y-%m-%d')
+		AND
+		c.room_type = 1
+		AND
+		c.area_code =
+		#{areaCode}
+		<if test="latitude!=null and latitude!=''">
+			AND
+			SQRT(
+			POW(
+			6370693.5 * COS(#{latitude} * PI() / 180) * (
+
+			IF (
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			) &gt;
+			PI(),
+			2 * PI() - (
+			#{longitude} * PI() / 180 - c.longitude * pi() /
+			180
+			),
+			(
+
+			IF
+			(
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			)
+			&lt; - PI(),
+			2
+			* PI() + (
+			#{longitude} * PI() / 180 - c.longitude *
+			pi() / 180
+			),
+			(
+			#{longitude} * PI() / 180 - c.longitude * pi() / 180
+			)
+			)
+			)
+			)
+			),
+			2
+			) + POW(
+			6370693.5 * (
+			#{latitude} * PI() / 180 - c.latitude *
+			pi() / 180
+			),
+			2
+			)
+			)
+			&lt;= 30000
+		</if>
+		<if test="sort==4">
+			ORDER BY
+			juli
+		</if>
+		<if test="sort==1">
+			ORDER BY
+			ca.price
+		</if>
+
+		) as sis
+	</select>
+
+	<select id="queryRoomInByRoomId" parameterType="com.shb.web.dto.room.RoomInfoDto"
+		resultType="com.shb.web.dto.room.RoomInfoDto">
+		SELECT
+		c.room_number AS roomNumber,
+		c.address AS address,
+		c.least_check_day_number AS leastCheckDayNumber,
+		c.wherther_refund AS whertherRefund,
+		c.room_up_day AS roomUpDay,
+		c.sri_id AS sriId,
+		c.reception_age AS receptionAge,
+		c.reception_sex AS
+		receptionSex,
+		c.whether_pet AS whetherPet,
+		c.whether_somking AS
+		whetherSomking,
+		c.whether_party AS whetherParty,
+		c.whether_cook AS
+		whetherCook,
+		c.whether_overnight AS whetherOvernight,
+		c.other_tips AS
+		otherTips,
+		c.whether_add_bed AS whetherAddBed,
+		c.bedroom_number AS
+		bedroomNumber,
+		c.living_room_number AS livingRoomNumber,
+		c.toilet_number AS toiletNumber,
+		c.personality_describe AS
+		personalityDescribe,
+		c.inside_discribe AS insideDiscribe,
+		c.room_measure_area AS roomMeasureArea,
+		c.room_describe AS
+		roomDescribe,
+		c.latitude AS latitude,
+		c.longitude AS longitude,
+		c.room_title AS roomTitle,
+		c.room_upload AS roomUpload,
+		c.check_time AS
+		checkTime,
+		c.check_out_time AS checkOutTime,
+		c.reception_time AS
+		receptionTime,
+		d.portrait_src AS portraitSrc,
+		c.lease_type AS leaseType,
+		c.check_number AS checkNumber,
+		c.whether_check_true AS
+		whetherCheckTrue,
+		s.pic_src AS picSrc,
+		round(ca.price/(1-IFNULL(c.commission_proportion,0)/100),0) AS price,
+		round(ca.price/(1-IFNULL(c.commission_proportion,0)/100)/(IFNULL(ca.discount,10)/10),0)
+		AS
+		discountPrice,
+		ca.price_type
+		AS priceType,
+		ca.discount AS discount,
+		<if test="username!=null and username!=''">
+			IFNULL(
+			(
+			SELECT
+			rc.falg
+			FROM
+			shb_room_collection rc
+			WHERE
+			<if test="sriId!=null and sriId!=''">
+				rc.sri_rid = #{sriId}
+			</if>
+			<if test="username!=null and username!=''">
+				AND rc.username = #{username}
+			</if>
+			),
+			0
+			) falg,
+		</if>
+		(
+		SELECT
+		SUM(cl.bed_number)
+		FROM
+		shb_bed_classification cl
+		WHERE
+		cl.sri_rid
+		= c.sri_id
+		AND cl.is_delete =
+		1
+		) badNums,
+		IFNULL(
+		(
+		SELECT
+		AVG(ev.score)
+		FROM
+		shb_room_evaluate ev
+		WHERE
+		ev.sri_rid = c.sri_id
+		AND ev.is_delete = 1
+		),
+		5
+		) score
+		FROM
+		shb_room_info
+		c,
+		shb_landlord_info d,
+		shb_room_picture s,
+		shb_room_price_calendar ca
+		WHERE
+		c.sri_id = s.sri_rid
+		AND c.sri_id =
+		s.sri_rid
+		AND ca.sri_rid =
+		c.sri_id
+		AND c.room_upload = d.username
+		AND
+		d.state = 0
+		AND c.is_delete =
+		1
+		AND ca.is_delete = 1
+		AND d.is_delete = 1
+		AND s.is_delete = 1
+		AND
+		s.whether_thumbnail = 1
+		AND c.room_status = 1
+		AND
+		DATE_FORMAT(ca.time,
+		'%Y-%m-%d') = DATE_FORMAT(NOW(), '%Y-%m-%d')
+		AND
+		c.room_type = 1
+		<if test="sriId!=null and sriId!=''">
+			AND c.sri_id = #{sriId}
+		</if>
+		GROUP BY
+		c.sri_id
+	</select>
+
+	<!-- <select id="selectLandlordReceivablesInfoByRoomId"
+		parameterType="long" resultType="LandlordReceivables">
+		SELECT
+		a.sri_id AS srid,
+		c.type AS type,
+		c.account AS account,
+		c. NAME AS NAME,
+		c.alipay_account AS
+		alipayAccount,
+		c.bank_name AS bankName,
+		c.bank_branch AS bankBranch,
+		c.bank_account AS bankAccount,
+		c.bank_user_name AS bankUserName,
+		c.alipay_user_name AS alipayUserName
+		FROM
+		shb_room_info a
+		LEFT JOIN
+		shb_landlord_info b ON a.room_upload = b.username
+		LEFT JOIN
+		shb_landlord_receivables c ON b.sli_id = c.sli_rid
+		WHERE
+		c.is_delete = 1
+		AND c.whether_default = 1
+		AND a.sri_id = #{sriRid}
+	</select> -->
+	<!-- <select id="queryRoomTitle" resultType="RoomInfoTitle"
+		parameterType="String">
+		SELECT
+		a.sri_id AS sriId,
+		a.room_title AS
+		roomTitle from
+		shb_room_info a
+		LEFT JOIN shb_landlord_info b ON a.room_upload =
+		b.username
+		WHERE
+		a.room_title REGEXP
+		#{roomTitle} AND a.is_delete
+		= 1 AND room_status = 1
+		AND b.state = 0 AND a.room_type = 1
+		LIMIT 0,
+		5
+	</select> -->
+	<!-- <select id="queryLandByNinkName" resultType="Landlord"
+		parameterType="String">
+
+		SELECT
+		a.sli_id AS sliId ,
+		a.nickname AS nickName,
+		a.username AS username
+		FROM
+		shb_landlord_info a LEFT JOIN shb_room_info
+		b ON a.username =
+		b.room_upload
+		WHERE
+		a.nickname REGEXP
+
+		#{nickName} AND a.state = 0 AND
+		a.is_delete = 1
+		AND b.room_status = 1 AND
+		b.is_delete = 1
+		AND
+		b.room_type
+		= 1
+		GROUP BY
+		a.username
+		LIMIT 0,
+		5
+	</select> -->
+	
+	<!-- <select id="queryRoomBadType" resultType="RoomBadTypeDto"
+		parameterType="long">
+		SELECT
+		a.bed_type AS bad,
+		a.bed_id AS id
+		FROM
+		shb_bed_classification a
+		WHERE
+		a.is_delete = 1 AND
+		a.sri_rid = #{id}
+	</select>
+	<select id="queryRoomPriceCount" resultType="RoomPriceCalendarDto"
+		parameterType="RoomInfoDto">
+		SELECT
+		a.price AS price,
+		a.nums AS nums
+		FROM
+		shb_room_price_calendar a
+		WHERE
+		1 = 1
+		<if test="startTime !=null and startTime !=''">
+			AND DATE_FORMAT(a.time, '%Y-%m-%d') &gt;= #{startTime}
+		</if>
+		<if test="endTime !=null and endTime != ''">
+			AND DATE_FORMAT(a.time, '%Y-%m-%d') &lt; #{endTime}
+		</if>
+		<if test="sriId !=null and sriId!=''"></if>
+		AND a.sri_rid = #{sriId}
+	</select> -->
+</mapper>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<h1>sss</h1>
+<div>
+   <form  method="POST"  enctype="multipart/form-data" id="form1" action="/uploadExcel/ajaxUpload"> 
+
+<a href="/duanxin - moban.xlsx"><span>模板下载</span></a>&ensp;&ensp;&ensp;&ensp;<input type="file" name="file" id="file"/><input type="submit" id="btn" value="提交"/> </form> </div>
+</body>
+<script type="text/javascript" src="/app/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/app/js/excel.js"></script>
+
+</html>

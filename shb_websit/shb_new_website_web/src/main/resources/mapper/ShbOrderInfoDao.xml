@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shb.web.dao.order.ShbOrderInfoDao">
+	<resultMap id="BaseResultMap" type="com.shb.web.mobile.order.ShbOrderInfo">
+		<id column="soi_id" property="soiId" jdbcType="BIGINT" />
+		<result column="sui_rid" property="suiRid" jdbcType="BIGINT" />
+		<result column="sri_rid" property="sriRid" jdbcType="BIGINT" />
+		<result column="sli_rid" property="sliRid" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+		<result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+		<result column="reserve_number" property="reserveNumber"
+			jdbcType="TINYINT" />
+		<result column="check_number" property="checkNumber" jdbcType="TINYINT" />
+		<result column="state" property="state" jdbcType="TINYINT" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+		<result column="operator" property="operator" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="time" property="time" jdbcType="TIMESTAMP" />
+		<result column="settlement" property="settlement" jdbcType="TINYINT" />
+		<result column="fail_info" property="failInfo" jdbcType="VARCHAR" />
+		<result column="settlement_time" property="settlementTime"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<!-- 查询订单信息 -->
+	<select id="queryShbOrderInfo" resultType="com.shb.web.dto.order.ShbOrderInfoDto"
+		parameterType="com.shb.web.dto.order.ShbOrderInfoDto">
+		SELECT
+		b.check_time as
+		checkTime,
+		b.room_up_day as roomUpDay,
+		b.wherther_refund as whertherRefund,
+		a.sri_rid as sriRid,
+		pis.pic_src as
+		picSrc,
+		b.lease_type as
+		leaseType ,
+		b.room_title as
+		roomTitle,
+		a.soi_id as
+		soiId ,
+		DATE_FORMAT(a.start_time,
+		'%Y-%m-%d') as
+		startTime,
+		DATE_FORMAT(a.end_time, '%Y-%m-%d') as
+		endTime,
+		if (datediff(
+		DATE_FORMAT(a.end_time, '%Y-%m-%d'),
+		DATE_FORMAT(a.start_time,
+		'%Y-%m-%d')
+		)=0,1,datediff(
+		DATE_FORMAT(a.end_time, '%Y-%m-%d'),
+		DATE_FORMAT(a.start_time,
+		'%Y-%m-%d'))) as chechDays
+		,
+		a.reserve_number
+		as reserveNumber,
+		a.state as
+		state,
+		a.actual_price as actualPrice,
+		li.phone AS landlordPhone,
+		a.phone AS userPhone,
+		a.name AS name
+		FROM
+		shb_order_info a
+		LEFT JOIN
+		shb_room_info b ON a.sri_rid = b.sri_id
+		LEFT
+		JOIN shb_user_info us ON
+		us.user_id = a.sui_rid
+		LEFT JOIN
+		shb_room_picture pis ON a.sri_rid =
+		pis.sri_rid
+		LEFT JOIN
+		shb_landlord_info li ON li.username = b.room_upload
+		WHERE
+		us.username =
+		#{username}
+		AND pis.whether_thumbnail = 1
+		AND a.is_delete = 1
+		<if test="orderType ==2"> <!-- 待确认 -->
+			AND a.state = 0
+		</if>
+		<if test="orderType ==3"> <!-- 待付款 -->
+			AND a.state = 1
+		</if>
+		<if test="orderType ==4"> <!-- 待入住 -->
+			AND a.state IN (2,13)
+		</if>
+		<if test="orderType ==5"> <!-- 待评价 -->
+			AND a.state = 4
+		</if>
+		ORDER BY a.create_time DESC
+	</select>
+
+	<update id="updateByPrimaryKeySelective" parameterType="ShbOrderInfo">
+		update shb_order_info
+		<set>
+			<if test="suiRid != null">
+				sui_rid = #{suiRid,jdbcType=BIGINT},
+			</if>
+			<if test="sriRid != null">
+				sri_rid = #{sriRid,jdbcType=BIGINT},
+			</if>
+			<if test="sliRid != null">
+				sli_rid = #{sliRid,jdbcType=BIGINT},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="startTime != null">
+				start_time = #{startTime},
+			</if>
+			<if test="endTime != null">
+				end_time = #{endTime},
+			</if>
+			<if test="reserveNumber != null">
+				reserve_number = #{reserveNumber,jdbcType=TINYINT},
+			</if>
+			<if test="checkNumber != null">
+				check_number = #{checkNumber,jdbcType=TINYINT},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=TINYINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="operator != null">
+				operator = #{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime},
+			</if>
+			<if test="time != null">
+				time = #{time,jdbcType=TIMESTAMP},
+			</if>
+			<if test="settlementland != null">
+				settlementland = #{settlementland,jdbcType=TINYINT},
+			</if>
+			<if test="settlement != null">
+				settlement = #{settlement,jdbcType=TINYINT},
+			</if>
+			<if test="failInfoland != null">
+				fail_infoland = #{failInfoland,jdbcType=VARCHAR},
+			</if>
+			<if test="failInfo != null">
+				fail_info = #{failInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="settlementTimeland != null">
+				settlement_timeland = #{settlementTimeland},
+			</if>
+			<if test="settlementTime != null">
+				settlement_time = #{settlementTime},
+			</if>
+			<if test="priceTotal != null">
+				price_total = #{priceTotal,jdbcType=DOUBLE},
+			</if>
+			<if test="couponPrice != null">
+				coupon_price = #{couponPrice,jdbcType=BIGINT},
+			</if>
+			<if test="actualPrice != null">
+				actual_price = #{actualPrice,jdbcType=DOUBLE},
+			</if>
+			<if test="auditNotThroughInfo != null">
+				audit_not_through_info =
+				#{auditNotThroughInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="cancellationReasons != null">
+				cancellation_reasons =
+				#{cancellationReasons,jdbcType=TINYINT},
+			</if>
+			<if test="otherReasons != null">
+				other_reasons = #{otherReasons,jdbcType=VARCHAR},
+			</if>
+			<if test="auditNotRefundInfo != null">
+				audit_not_refund_info =
+				#{auditNotRefundInfo,jdbcType=TINYINT},
+			</if>
+			<if test="otherRefundReasons != null">
+				other_refund_reasons =
+				#{otherRefundReasons,jdbcType=VARCHAR},
+			</if>
+			<if test="applyRefundInfo != null">
+				apply_refund_info = #{applyRefundInfo,jdbcType=TINYINT},
+			</if>
+			<if test="otherRefund != null">
+				other_refund = #{otherRefund,jdbcType=VARCHAR},
+			</if>
+			<if test="scRid != null">
+				sc_rid = #{scRid},
+			</if>
+		</set>
+		where soi_id = #{soiId,jdbcType=BIGINT}
+	</update>
+
+	<insert id="insertOrderInfo" parameterType="ShbOrderInfo"
+		keyProperty="soiId">
+		insert into shb_order_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="soiId != null">
+				soi_id,
+			</if>
+			<if test="suiRid != null">
+				sui_rid,
+			</if>
+			<if test="sriRid != null">
+				sri_rid,
+			</if>
+			<if test="sliRid != null">
+				sli_rid,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="startTime != null">
+				start_time,
+			</if>
+			<if test="endTime != null">
+				end_time,
+			</if>
+			<if test="reserveNumber != null">
+				reserve_number,
+			</if>
+			<if test="checkNumber != null">
+				check_number,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="operator != null">
+				operator,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="time != null">
+				time,
+			</if>
+			<if test="settlement != null">
+				settlement,
+			</if>
+			<if test="failInfo != null">
+				fail_info,
+			</if>
+			<if test="settlementTime != null">
+				settlement_time,
+			</if>
+			<if test="priceTotal != null">
+				price_total,
+			</if>
+			<if test="couponPrice != null">
+				coupon_price,
+			</if>
+			<if test="actualPrice != null">
+				actual_price,
+			</if>
+			<if test="scRid != null">
+				sc_rid,
+			</if>
+			<if test="commissionProportion != null">
+				commission_proportion,
+			</if>
+			<if test="landlordStatement != null">
+				landlord_statement,
+			</if>
+			<if test="landlordReceivablesInfo != null and landlordReceivablesInfo != ''">
+				landlord_receivables_info,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="soiId != null">
+				#{soiId},
+			</if>
+			<if test="suiRid != null">
+				#{suiRid},
+			</if>
+			<if test="sriRid != null">
+				#{sriRid},
+			</if>
+			<if test="sliRid != null">
+				#{sliRid},
+			</if>
+			<if test="name != null">
+				#{name},
+			</if>
+			<if test="phone != null">
+				#{phone},
+			</if>
+			<if test="startTime != null">
+				#{startTime},
+			</if>
+			<if test="endTime != null">
+				#{endTime},
+			</if>
+			<if test="reserveNumber != null">
+				#{reserveNumber},
+			</if>
+			<if test="checkNumber != null">
+				#{checkNumber},
+			</if>
+			<if test="state != null">
+				#{state},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="operator != null">
+				#{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime},
+			</if>
+			<if test="time != null">
+				#{time},
+			</if>
+			<if test="settlement != null">
+				#{settlement},
+			</if>
+			<if test="failInfo != null">
+				#{failInfo},
+			</if>
+			<if test="settlementTime != null">
+				#{settlementTime},
+			</if>
+			<if test="priceTotal != null">
+				#{priceTotal},
+			</if>
+			<if test="couponPrice != null">
+				#{couponPrice},
+			</if>
+			<if test="actualPrice != null">
+				#{actualPrice},
+			</if>
+			<if test="scRid != null">
+				#{scRid},
+			</if>
+			<if test="commissionProportion != null">
+				#{commissionProportion},
+			</if>
+			<if test="landlordStatement != null">
+				#{landlordStatement},
+			</if>
+			<if test="landlordReceivablesInfo != null">
+				#{landlordReceivablesInfo},
+			</if>
+		</trim>
+		<selectKey resultType="java.lang.Long" order="AFTER"
+			keyProperty="soiId">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<!-- 根据ID查询订单详情 -->
+	<select id="findOrderInfo" resultType="java.util.LinkedHashMap">
+		SELECT
+		u.username,
+		sr.sr_id AS srId,
+		b.whether_overnight AS whetherOvernight,
+		DATE_FORMAT(b.check_time, '%Y-%m-%d %H:%i:%s') AS checkTime,
+		c.phone AS landPhone,
+		b.wherther_refund AS whertherRefund,
+		b.room_up_day AS roomUpDay,
+		a.sri_rid AS sriRid,
+		a.soi_id AS soiId,
+		a.state AS state,
+		b.room_title AS roomTitle,
+		(
+		SELECT
+		SUM(bed.bed_number)
+		FROM
+		shb_bed_classification bed
+		WHERE
+		bed.sri_rid = sri_id
+		AND bed.is_delete = 1
+		) AS badNums,
+		pic.pic_src AS thumbnail,
+		b.bedroom_number AS bedroomNumber,
+		b.toilet_number AS toiletNumber,
+		b.living_room_number AS livingRoomNumber,
+		b.address AS address,
+		b.address_info AS addressInfo,
+		DATE_FORMAT(a.start_time, '%Y-%m-%d') AS startTime,
+		DATE_FORMAT(a.end_time, '%Y-%m-%d') AS endTime,
+		a.`name` AS name,
+		a.phone AS phone,
+		a.reserve_number AS reserveNumber,
+		a.check_number AS checkNumber,
+		a.actual_price AS actualPrice,
+		a.price_total AS priceTotal,
+		a.coupon_price AS couponPrice,
+		DATE_FORMAT(a.create_time, '%Y-%m-%d %H:%i:%s') AS createTime,
+		c.nickname AS nickName,
+		c.sli_id AS sliId,
+		c.type AS type,
+		DATE_FORMAT(sr.refund_time, '%Y-%m-%d %H:%i:%s') AS refundTime,
+		a.apply_refund_info AS applyRefundInfo,
+		a.other_refund AS otherRefund,
+		DATE_FORMAT(a.modify_time, '%Y-%m-%d %H:%i:%s') AS modifyTime,
+		sr.apply_refund_info AS RefundInfo,
+		sr.other_reasons AS otherReasons,
+		a.sc_rid AS scRid,
+		g.pay_type as payType,
+		g.pay_account as payAccount,
+		DATE_FORMAT(g.pay_time, '%Y-%m-%d %H:%i:%s') as payTime,
+		g.actual_payment AS actualPayment
+		FROM
+		shb_order_info a
+		LEFT JOIN shb_room_info b ON a.sri_rid = b.sri_id
+		LEFT JOIN shb_landlord_info c ON b.room_upload = c.username
+		LEFT JOIN shb_room_picture pic ON pic.sri_rid = b.sri_id
+		LEFT JOIN shb_refund sr ON sr.order_number = a.soi_id
+		LEFT JOIN shb_user_info u ON u.user_id = a.sui_rid
+		LEFT JOIN shb_pay_info g on g.soi_rid=a.soi_id
+		WHERE
+		a.soi_id
+		=#{soiId}
+		AND
+		pic.whether_thumbnail = 1
+		<if test="payType!=null and payType!='' ">
+			AND a.state IN (2,3,4,5,8,9)
+		</if>
+		GROUP BY a.soi_id
+	</select>
+	
+	<update id="updateState" parameterType="ShbOrderInfo">
+		update shb_order_info set state=#{state}
+		<if test="cancellationReasons !=null and cancellationReasons !=''">
+			, cancellation_reasons=#{cancellationReasons}
+		</if>
+		<if test="otherReasons !=null and otherReasons !=''">
+			, other_reasons=#{otherReasons}
+		</if>
+		<if test="applyRefundInfo !=null and applyRefundInfo !=''">
+			, apply_refund_info=#{applyRefundInfo}
+		</if>
+		<if test="otherRefund !=null and otherRefund !=''">
+			, other_refund=#{otherRefund}
+		</if>
+		where soi_id=#{soiId}
+	</update>
+	
+	<select id="selectOrderInfoTime" resultType="com.shb.web.dto.order.ShbOrderInfoDto"
+		parameterType="long">
+		SELECT
+		a.soi_id AS soiId,
+		UNIX_TIMESTAMP(a.modify_time)AS
+		time,
+		a.actual_price AS actualPrice
+		FROM
+		shb_order_info a
+		WHERE
+		a.soi_id =
+		#{soiId} AND a.is_delete = 1
+	</select>
+	<select id="selectOrderInfoById" resultType="ShbOrderInfo"
+		parameterType="ShbOrderInfo">
+		SELECT
+		a.soi_id as soiId,
+		a.sui_rid,
+		a.actual_price
+		FROM
+		shb_order_info a
+		WHERE
+		a.soi_id = #{soiId}
+		AND a.is_delete = 1
+		AND a.state
+		IN(2,13)
+	</select>
+</mapper>
