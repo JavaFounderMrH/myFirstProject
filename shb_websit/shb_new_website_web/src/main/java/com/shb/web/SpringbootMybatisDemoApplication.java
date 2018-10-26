@@ -21,7 +21,7 @@ public class SpringbootMybatisDemoApplication extends SpringBootServletInitializ
 	}
 	
 	@Bean    
-	 public ErrorPageFilter errorPageFilter() {   
+	 public ErrorPageFilter errorPageFilter() {    
 	      return new ErrorPageFilter();   
 	 }    
 	@Bean
